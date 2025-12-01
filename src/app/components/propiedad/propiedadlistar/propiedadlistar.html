@@ -1,0 +1,217 @@
+<div class="list-container">
+  <h2>Lista de Propiedades</h2>
+
+  <div class="cards-grid">
+    <div class="property-card" *ngFor="let element of dataSource.data">
+      <!-- IMAGEN PRINCIPAL -->
+      <div class="image-box">
+        <img
+          [src]="
+            element.imagenes.length > 0
+              ? element.imagenes[0].urlImagen
+              : 'https://via.placeholder.com/400x250?text=Sin+Imagen'
+          "
+          alt="Imagen propiedad"
+        />
+      </div>
+
+      <!-- CONTENIDO -->
+      <div class="content-box">
+        <h3>{{ element.titulo }}</h3>
+
+        <p class="precio">S/ {{ element.precio }}</p>
+
+        <p class="info">
+          <strong>Distrito:</strong> {{ element.distrito.nombreDistrito }} <br />
+          <strong>Tipo:</strong> {{ element.tipo }} <br />
+          <strong>Categoría:</strong> {{ element.categoria }}
+        </p>
+
+        <!-- ESTADO -->
+        <span
+          class="estado"
+          [ngClass]="{
+            disponible: element.estado === 'Disponible',
+            'no-disponible': element.estado !== 'Disponible'
+          }"
+        >
+          {{ element.estado }}
+        </span>
+
+        <!-- BOTONES -->
+        <div class="actions">
+          <button
+            mat-flat-button
+            class="btn-detalle"
+            type="button"
+            (click)="verDetalles(element)"
+          >
+            <mat-icon>visibility</mat-icon>
+            Ver detalles
+          </button>
+
+          <button
+            mat-flat-button
+            color="primary"
+            class="btn-edit"
+            [routerLink]="['edits', element.idPropiedad]"
+          >
+            <mat-icon>edit</mat-icon>
+            Editar
+          </button>
+
+          <button
+            mat-flat-button
+            color="warn"
+            class="btn-delete"
+            type="button"
+            (click)="eliminar(element.idPropiedad)"
+          >
+            <mat-icon>delete</mat-icon>
+            Eliminar
+          </button>
+
+          <button
+            mat-flat-button
+            color="accent"
+            class="btn-ubicacion"
+            type="button"
+            (click)="verUbicacion(element.idPropiedad)"
+          >
+            <mat-icon>location_on</mat-icon>
+            Ver ubicación
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN REGISTRAR -->
+  <div class="register-box">
+    <button mat-flat-button class="btn-register" routerLink="/propiedades/nuevo">
+      Registrar Propiedad
+    </button>
+  </div>
+</div>
+
+<!-- =========================
+     MODAL DETALLE PROPIEDAD
+     ========================= -->
+<div class="detalle-overlay" *ngIf="selectedPropiedad as prop">
+  <div class="detalle-card">
+    <!-- HEADER DETALLE -->
+    <div class="detalle-header">
+      <div class="detalle-main">
+        <div class="detalle-thumb">
+          <img
+            [src]="
+              prop.imagenes.length > 0
+                ? prop.imagenes[0].urlImagen
+                : 'https://via.placeholder.com/240x160?text=Propiedad'
+            "
+            [alt]="prop.titulo || 'Propiedad'"
+          />
+        </div>
+        <div class="detalle-title-block">
+          <h3>{{ prop.titulo }}</h3>
+          <p class="detalle-sub">
+            <mat-icon>location_on</mat-icon>
+            {{ prop.distrito.nombreDistrito || 'Sin distrito' }}
+          </p>
+          <p class="detalle-tagline">
+            {{ prop.tipo }} · {{ prop.categoria }} ·
+            <span class="detalle-precio">S/ {{ prop.precio }}</span>
+          </p>
+        </div>
+      </div>
+
+      <button
+        mat-icon-button
+        type="button"
+        class="btn-detalle-close"
+        (click)="cerrarDetalles()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <!-- BODY DETALLE -->
+    <div class="detalle-body">
+      <div class="detalle-columns">
+        <!-- Columna 1 -->
+        <div class="detalle-col">
+          <h4>Información general</h4>
+          <div class="detalle-item">
+            <span class="label">Descripción</span>
+            <span class="value">{{ prop.descripcion }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Dirección</span>
+            <span class="value">{{ prop.direccion }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Estado</span>
+            <span class="value">{{ prop.estado }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Fecha publicación</span>
+            <span class="value">
+              {{ prop.fechaPublicacion | date: 'dd/MM/yyyy' }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Columna 2 -->
+        <div class="detalle-col">
+          <h4>Características</h4>
+          <div class="detalle-item">
+            <span class="label">Metros cuadrados</span>
+            <span class="value">{{ prop.metrosCuadrados }} m²</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Habitaciones</span>
+            <span class="value">{{ prop.habitaciones }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Baños</span>
+            <span class="value">{{ prop.banos }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Destacada</span>
+            <span class="value">{{ prop.destacada ? 'Sí' : 'No' }}</span>
+          </div>
+        </div>
+
+        <!-- Columna 3 -->
+        <div class="detalle-col">
+          <h4>Ubicación & VR</h4>
+          <div class="detalle-item">
+            <span class="label">Latitud</span>
+            <span class="value">{{ prop.latitud }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Longitud</span>
+            <span class="value">{{ prop.longitud }}</span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">URL VR</span>
+            <span class="value">
+              {{ prop.urlVr || 'Sin enlace VR registrado' }}
+            </span>
+          </div>
+          <div class="detalle-item">
+            <span class="label">Usuario</span>
+            <span class="value">
+              {{ prop.usuario.nombre }} {{ prop.usuario.apellido}}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="detalle-notas" *ngIf="prop.notas">
+        <h4>Notas</h4>
+        <p>{{ prop.notas }}</p>
+      </div>
+    </div>
+  </div>
+</div>

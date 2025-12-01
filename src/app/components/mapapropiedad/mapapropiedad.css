@@ -1,0 +1,15 @@
+/* Botón centrado mejor en vertical */
+.btn-volver {
+    margin-top: 20px;
+    /* ↓ Mueve el botón hacia abajo */
+    line-height: 26px;
+    /* Centra el texto */
+    font-size: 15px;
+    /* Tamaño del texto un poco mayor */
+    padding: 8px 20px;
+    /* Mantiene el botón bonito */
+    border-radius: 30px;
+    /* Mantiene forma redondeada */
+    display: inline-block;
+    /* Asegura que se vea como botón */
+}

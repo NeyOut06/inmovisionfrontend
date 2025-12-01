@@ -1,0 +1,184 @@
+/* ================================
+   RECOMENDACIÓN LISTAR - INMOVISION
+   ================================ */
+
+.reco-list-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  padding: 24px 12px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 0%, #050816 50%, #02030a 100%);
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.reco-list-card {
+  width: 100%;
+  max-width: 920px;              /* un poco más compacto */
+  background: #07152b;
+  border-radius: 22px;
+  padding: 20px 22px 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+  color: #f5f7ff;
+  border: 1px solid rgba(114, 144, 255, 0.35);
+}
+
+/* HEADER */
+.reco-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.reco-list-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.reco-list-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(129, 140, 248, 0.18);
+  border: 1px solid rgba(129, 140, 248, 0.7);
+}
+
+.reco-list-icon mat-icon {
+  font-size: 22px;
+}
+
+.reco-list-title {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.reco-list-subtitle {
+  margin: 2px 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.reco-list-header-right button {
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline: 14px;
+}
+
+/* TABLA */
+.reco-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 6px;
+  border-radius: 16px;
+  background: #050f22;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.reco-table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Cabecera con más contraste */
+.reco-table .mat-mdc-header-row {
+  background: #0d2345 !important;
+}
+
+.reco-table th.mat-mdc-header-cell {
+  color: #f4f7ff !important;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  border-bottom-color: rgba(148, 163, 255, 0.4);
+}
+
+/* Celdas */
+.reco-table td.mat-mdc-cell,
+.reco-table th.mat-mdc-header-cell {
+  padding: 8px 10px;
+  border-bottom-color: rgba(100, 116, 255, 0.16);
+  font-size: 13px;
+  color: #e6edff;
+}
+
+/* Zebra rows para que se lean mejor */
+.reco-table .mat-mdc-row:nth-child(odd) {
+  background: #07172f;
+}
+.reco-table .mat-mdc-row:nth-child(even) {
+  background: #081d3a;
+}
+
+/* Hover */
+.reco-table .mat-mdc-row.reco-row-hover:hover {
+  background: rgba(37, 99, 235, 0.45);
+}
+
+/* Primera columna (#) un poco más angosta */
+.reco-table th.mat-mdc-header-cell:first-child,
+.reco-table td.mat-mdc-cell:first-child {
+  width: 50px;
+  text-align: center;
+}
+
+/* Motivo recortado pero legible */
+.reco-motivo {
+  max-width: 320px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Chips usuario / propiedad */
+.reco-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.user-chip {
+  background: rgba(129, 140, 248, 0.2);
+  border: 1px solid rgba(129, 140, 248, 0.85);
+}
+
+.property-chip {
+  background: rgba(45, 212, 191, 0.18);
+  border: 1px solid rgba(45, 212, 191, 0.8);
+}
+
+/* Iconos acciones */
+button[mat-icon-button] mat-icon {
+  font-size: 20px;
+}
+
+@media (max-width: 700px) {
+  .reco-list-card {
+    padding: 16px 12px 14px;
+  }
+
+  .reco-list-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reco-motivo {
+    max-width: 220px;
+  }
+}

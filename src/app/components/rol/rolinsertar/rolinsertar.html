@@ -1,0 +1,76 @@
+<div class="role-page">
+  <div class="role-card">
+    <h2 class="role-title">
+      {{ edicion ? 'Editar Rol' : 'Registro de Rol' }}
+    </h2>
+
+    <form [formGroup]="form" (ngSubmit)="aceptar()" class="role-form">
+      <!-- Campo ID solo en edición -->
+      @if (edicion) {
+        <mat-form-field appearance="fill" class="field">
+          <mat-label>ID</mat-label>
+          <input matInput formControlName="codigo" readonly />
+        </mat-form-field>
+      }
+
+      <!-- Nombre del rol -->
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>Nombre del rol</mat-label>
+        <mat-select
+          formControlName="nombre"
+          panelClass="inmovision-select-panel"
+        >
+          @for (r of listaRoles; track r) {
+            <mat-option [value]="r">{{ r }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>
+          @if (form.get('nombre')?.hasError('required')) {
+            Seleccione un rol!!
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Usuario asociado -->
+      <mat-form-field appearance="fill" class="field">
+        <mat-label>Usuario asignado</mat-label>
+        <mat-select
+          formControlName="usuario"
+          panelClass="inmovision-select-panel"
+        >
+          @for (u of listaUsuarios; track u) {
+            <mat-option [value]="u.idUser">
+              {{ u.nombre }} {{ u.apellido }}
+            </mat-option>
+          }
+        </mat-select>
+        <mat-error>
+          @if (form.get('usuario')?.hasError('required')) {
+            Seleccione un usuario!!
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Botones -->
+      <div class="actions">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!form.valid"
+        >
+          {{ edicion ? 'Actualizar' : 'Guardar' }}
+        </button>
+
+        <button
+          mat-stroked-button
+          color="warn"
+          type="button"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="fav-page">
+  <!-- HEADER -->
+  <section class="fav-header">
+    <div class="fav-header-text">
+      <h2>Lista de Favoritos</h2>
+      <p>Propiedades guardadas por los usuarios.</p>
+    </div>
+
+    <button
+      mat-flat-button
+      class="btn-add-fav"
+      routerLink="/favoritos/nuevo"
+    >
+      <mat-icon>favorite</mat-icon>
+      Registrar Favorito
+    </button>
+  </section>
+
+  <!-- GRID DE CARDS -->
+  <section
+    class="fav-grid"
+    *ngIf="dataSource.data.length > 0; else noFavs"
+  >
+    <article
+      class="fav-card"
+      *ngFor="let element of dataSource.data"
+    >
+      <!-- HEADER CARD -->
+      <header class="fav-card-header">
+        <span class="fav-id">#{{ element.idFavorito }}</span>
+        <span class="fav-date">
+          {{ element.fechaAgregado | date: 'dd/MM/yyyy' }}
+        </span>
+      </header>
+
+      <!-- CUERPO -->
+      <div class="fav-card-body">
+        <h3 class="prop-title">
+          {{ element.propiedad.titulo || 'Propiedad sin título' }}
+        </h3>
+
+        <p class="prop-user">
+          <mat-icon>person</mat-icon>
+          {{ element.usuario.nombre || 'Usuario desconocido' }}
+        </p>
+
+        
+      </div>
+
+      <!-- ACCIONES -->
+      <footer class="fav-card-actions">
+        <button
+          mat-icon-button
+          class="btn-icon edit"
+          [routerLink]="['edit', element.idFavorito]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="btn-icon delete"
+          (click)="eliminar(element.idFavorito)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </footer>
+    </article>
+  </section>
+
+  <!-- SIN DATOS -->
+  <ng-template #noFavs>
+    <div class="fav-empty">
+      <mat-icon>favorite_border</mat-icon>
+      <p>Todavía no hay favoritos registrados.</p>
+      <span>Registra el primero desde alguna propiedad.</span>
+    </div>
+  </ng-template>
+</div>

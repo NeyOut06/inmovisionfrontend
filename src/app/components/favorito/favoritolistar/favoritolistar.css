@@ -1,0 +1,272 @@
+/* ================================
+   FAVORITO LISTAR - INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* CONTENEDOR GENERAL */
+.fav-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #041528;
+  border-radius: 18px;
+  padding: 18px 20px 22px;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+}
+
+/* HEADER */
+.fav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.fav-header-text h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.fav-header-text p {
+  margin: 2px 0 0;
+  font-size: 0.86rem;
+  color: #9fb4d4;
+}
+
+/* BOTÓN REGISTRAR FAVORITO */
+.btn-add-fav {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(180, 221, 255, 0.5);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-add-fav mat-icon {
+  font-size: 18px;
+}
+
+.btn-add-fav:hover {
+  background-color: #1470c1 !important;
+}
+
+/* GRID DE CARDS */
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* CARD DE FAVORITO */
+.fav-card {
+  background: #020818;
+  border-radius: 14px;
+  padding: 10px 12px 10px;
+  border: 1px solid rgba(124, 194, 255, 0.25);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+.fav-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(180, 221, 255, 0.85);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.85);
+}
+
+/* HEADER DE LA CARD */
+.fav-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: #9fb4d4;
+}
+
+.fav-id {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(4, 21, 40, 0.9);
+  border: 1px solid rgba(124, 194, 255, 0.4);
+}
+
+.fav-date {
+  font-size: 0.78rem;
+  opacity: 0.9;
+}
+
+/* CUERPO DE LA CARD */
+.fav-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.prop-title {
+  margin: 2px 0 0;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.prop-user {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: #c8d3e6;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.prop-user mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #7cc2ff;
+}
+
+.prop-lista {
+  margin: 4px 0 0;
+}
+
+/* PILL DE LISTA */
+.lista-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  background: rgba(124, 194, 255, 0.08);
+  border: 1px solid rgba(124, 194, 255, 0.4);
+  color: #dce8ff;
+}
+
+/* Destacada si el nombre de la lista contiene "top" o "destac" */
+.lista-pill.lista-destacada {
+  background: linear-gradient(90deg, #ffb347, #ffcc33);
+  border-color: rgba(255, 255, 255, 0.9);
+  color: #1c1c1c;
+  box-shadow: 0 0 10px rgba(255, 204, 51, 0.6);
+}
+
+.lista-pill.lista-destacada::before {
+  content: "★";
+  font-size: 0.78rem;
+  margin-right: 4px;
+}
+
+/* ACCIONES DE LA CARD */
+.fav-card-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.btn-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px !important;
+  border: 1px solid rgba(124, 194, 255, 0.4) !important;
+  background: rgba(4, 21, 40, 0.95) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.65);
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon mat-icon {
+  font-size: 18px;
+}
+
+/* Edit celeste, Delete rojo */
+.btn-icon.edit mat-icon {
+  color: #7cc2ff;
+}
+
+.btn-icon.delete mat-icon {
+  color: #ff6b6b;
+}
+
+.btn-icon:hover {
+  background: #105590 !important;
+  box-shadow: 0 0 10px rgba(124, 194, 255, 0.6);
+}
+
+/* ESTADO SIN FAVORITOS */
+.fav-empty {
+  margin-top: 22px;
+  padding: 26px 14px;
+  text-align: center;
+  color: #c8d3e6;
+}
+
+.fav-empty mat-icon {
+  font-size: 38px;
+  margin-bottom: 6px;
+  color: #7cc2ff;
+}
+
+.fav-empty p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.fav-empty span {
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  :host {
+    padding: 12px;
+  }
+
+  .fav-page {
+    padding: 14px 12px 16px;
+  }
+
+  .fav-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fav-header-text h2 {
+    font-size: 18px;
+  }
+
+  .fav-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-add-fav {
+    align-self: stretch;
+    justify-content: center;
+  }
+}

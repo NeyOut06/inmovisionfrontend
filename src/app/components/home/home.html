@@ -1,0 +1,243 @@
+<main>
+  <!-- ============================ HOME / LANDING ============================= -->
+  <section id="inicio" class="section-home">
+    <div class="imagen-fondo">
+      <div class="cuadro">
+        <h1>De la Realidad a la Virtualidad</h1>
+        <p>
+          Accede a nuestro simulador virtual donde podrás introducirte a los ambientes interiores de
+          tu <br />
+          futuro hogar.
+        </p>
+        <a href="#simulador" (click)="scrollToSimulador($event)">
+          <button class="btn-simulation">Ir al simulador</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="nosotros">
+      <div class="card1">
+        <h1>Nosotros</h1>
+        <p>
+          En InmoVision, nos enfocamos en transformar la experiencia<br />
+          de compra de propiedades mediante el uso de tecnología de<br />
+          realidad virtual. Brindamos una plataforma robusta<br />
+          e inmersiva que te permite conocer los interiores de las<br />
+          propiedades que se adapten a tus necesidades.
+        </p>
+      </div>
+      <div class="card2">
+        <h1>Visión</h1>
+        <p>
+          Ser la plataforma líder en soluciones <br />
+          tecnológicas para el sector inmobiliario, <br />
+          ofreciendo experiencias innovadoras de <br />
+          marketing y gestión de propiedades a <br />
+          través de tecnologías avanzadas como <br />
+          la realidad virtual.
+        </p>
+      </div>
+      <div class="card3">
+        <h1>Misión</h1>
+        <p>
+          Desarrollar un sistema web y móvil que <br />
+          facilite la comercialización y gestión de <br />
+          propiedades en el sector inmobiliario,<br />
+          integrando tecnologías de realidad virtual <br />
+          para mejorar la experiencia de los usuarios.
+        </p>
+      </div>
+    </div>
+
+    <!-- Casa de campo -->
+    <div class="casa">
+      <div class="casa-imagen">
+        <div class="info">
+          <div class="descripcion">
+            <h1>Casa de Campo Inteligente</h1>
+            <p>
+              Esta hermosa casa de campo combina a la perfección <br />
+              el encanto rústico con todas las comodidades modernas,<br />
+              ofreciendo un entorno único para vivir rodeado de naturaleza.<br />
+              Al ingresar, serás recibido por un amplio jardín interior, un
+              <br />
+              espacio lleno de vegetación ideal para relajarse o disfrutar de
+              <br />
+              momentos de tranquilidad al aire libre.
+            </p>
+            <p>
+              Además, una encantadora casa del árbol añade un toque<br />
+              especial, proporcionando un espacio de juego seguro y <br />
+              divertido para los niños. Ubicada en un entorno sereno, <br />
+              esta casa es un oasis privado donde podrás desconectar<br />
+              de la ciudad y disfrutar de la vida en el campo.
+            </p>
+            <a class="btn-simulador" href="#edition">
+              <button>Ver detalles y edición</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opciones -->
+    <div class="options">
+      <div class="cartas">
+        <div class="card1">
+          <h2>CIUDAD</h2>
+        </div>
+        <div class="card2">
+          <h2>PLAYA</h2>
+        </div>
+        <div class="card3">
+          <h2>CAMPO</h2>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segunda casa -->
+    <div class="casa2">
+      <div class="casa-imagen2">
+        <div class="info2">
+          <div class="descripcion2">
+            <h1>Casa de Playa temática</h1>
+            <p>
+              Casa de playa moderna, pensada para disfrutar del mar y el sol,
+              <br />
+              con espacios amplios, terrazas y áreas sociales abiertas.
+            </p>
+            <p>
+              Ideal para compartir con amigos y familia, cuenta con vista<br />
+              panorámica, piscina y acceso directo a la arena.<br />
+              Vive la experiencia desde nuestra vista inmersiva en VR.
+            </p>
+            <a href="#simulador" (click)="scrollToSimulador($event)">
+              <button class="btn-simulation">Ir a la casa en VR</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ EDICIÓN / SLIDER + INFO + CHAT ============================= -->
+  <section id="edition" class="section-edition">
+    <div class="fondo_imagen"></div>
+
+    <div class="titulo">
+      <h1>Casa de Campo Inteligente</h1>
+    </div>
+
+    <!-- Slider -->
+    <div id="casa" class="section-container">
+      <div class="casa-container">
+        <div class="slider-container">
+          <div class="slider" id="slider">
+            <div class="slider__list">
+              <img src="assets/slider1.jpeg" alt="Slider 1" class="slider__img" />
+            </div>
+            <div class="slider__list">
+              <img src="assets/slider2.jpeg" alt="Slider 2" class="slider__img" />
+            </div>
+            <div class="slider__list">
+              <img src="assets/slider3.jpeg" alt="Slider 3" class="slider__img" />
+            </div>
+          </div>
+
+          <div class="slider__btn slider__btn--left" id="btn-left">
+            <i class="bi bi-arrow-left"></i>
+          </div>
+          <div class="slider__btn slider__btn--right" id="btn-right">
+            <i class="bi bi-arrow-right"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info + simulador -->
+    <div class="detalles detalles-edition">
+      <div class="image">
+        <div class="cuadro">
+          <div class="texto-imagen">
+            <p>Explora de manera virtual</p>
+            <a class="btn-sim" href="#simulador" (click)="scrollToSimulador($event)">
+              <button>Ver Simulador</button> 
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FAVORITOS (localStorage) ============================= -->
+  <section id="favoritos" class="section-favoritos">
+    <div class="fondo_imagen favoritos-bg">
+      <div class="texto_imagen">
+        <div class="contenido_cuadro">
+          <h1>Favoritos</h1>
+          <p>Conoce las propiedades de tu preferencia</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lista" id="lista-favoritos"></div>
+  </section>
+
+  <!-- ============================ ARRENDADOR + MODAL ============================= -->
+  <section id="arrendador" class="section-arrendador home-arrendador">
+    <div class="fondo_imagen arrendador-bg">
+      <div class="texto_imagen">
+        <div class="contenido_cuadro">
+          <h1>Publicaciones del Arrendador</h1>
+          <p>Gestiona las propiedades que tienes en alquiler</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal agregar propiedad -->
+  </section>
+
+  <!-- ============================ SIMULADOR VR (simple 360°) ============================= -->
+  <section id="simulador" class="section-simulador">
+    <h2>Simulador 360°</h2>
+    <p>Explora el interior de la propiedad en una vista inmersiva.</p>
+
+    <div class="vr-container">
+      <a-scene embedded>
+        <!-- Vista 360 estática -->
+        <a-sky src="assets/shot-panoramic-composition-bathroom.jpg" rotation="0 -90 0"></a-sky>
+      </a-scene>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Acerca de</h3>
+      <a href="#">Inmuebles en Perú</a>
+      <a href="#">Publicar tu inmueble</a>
+      <a href="#">Ayuda</a>
+      <a href="#">Trabaja con Nosotros</a>
+    </div>
+    <div class="footer-column">
+      <h3>Contáctanos</h3>
+      <p>Distritos más buscados</p>
+      <a href="#">Santiago De Surco</a>
+      <a href="#">San Isidro</a>
+      <a href="#">La Molina</a>
+      <a href="#">Miraflores</a>
+    </div>
+    <div class="footer-column">
+      <h3>Síguenos</h3>
+      <a href="#">Facebook</a>
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+      <a href="#">Youtube</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <a href="#">Términos y Condiciones</a>
+    <a href="#">Política de Privacidad</a>
+  </div>
+</footer>

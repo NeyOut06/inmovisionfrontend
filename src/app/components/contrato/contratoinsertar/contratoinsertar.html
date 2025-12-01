@@ -1,0 +1,100 @@
+<!-- contratoinsertar.html -->
+<div class="container">
+  <h2>{{ edicion ? 'Editar Contrato' : 'Insertar Contrato' }}</h2>
+  <form [formGroup]="form" (ngSubmit)="aceptar()">
+    <!-- Campo Código (solo lectura en edición) -->
+    @if (edicion) {
+    <mat-form-field class="example-full-width">
+      <mat-label>ID:</mat-label>
+      <input matInput formControlName="codigo" readonly="true" />
+    </mat-form-field>
+    }
+    <br />
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="tipo">
+        <mat-option value="Alquiler">Alquiler</mat-option>
+        <mat-option value="Venta">Venta</mat-option>
+      </mat-select>
+        <mat-error> @if (form.get('tipo')?.hasError('required')) { Complete Tipo!! } </mat-error>
+    </mat-form-field>
+
+    <!-- Campo Fecha Inicio -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fecha Inicio</mat-label>
+      <input matInput [matDatepicker]="pickerInicio" formControlName="fechaInicio" />
+      <mat-datepicker-toggle matIconSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+      <mat-error>
+        @if (form.get('fechaInicio')?.hasError('required')) { Complete fecha!! }
+        @if (form.get('fechaInicio')?.hasError('fechaPasada')) { La fecha no puede ser pasada. }
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo Fecha Fin -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Fecha Fin</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fechaFin" />
+      <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+      <mat-error> 
+        @if (form.get('fechaFin')?.hasError('required')&& form.get('fechaFin')?.touched) { Complete fecha!! } 
+        @if (form.hasError('rangoInvalido') && (form.get('fechaFin')?.touched || form.get('fechaInicio')?.touched)) { Fecha fin debe ser mayor que fecha inicio. }
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Campo Monto -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Monto</mat-label>
+      <input matInput type="number" formControlName="monto" placeholder="Monto del contrato" />
+      <mat-error> 
+        @if (form.get('monto')?.hasError('required')) { Rellene monto!! } 
+        @if (form.get('monto')?.hasError('min')) { El monto mínimo es 0. }
+      </mat-error>
+    </mat-form-field>
+
+    <mat-radio-group formControlName="estado" class="full-width">
+      <mat-label>Estado</mat-label>
+      <mat-radio-button value="Activo">Activo</mat-radio-button>
+      <mat-radio-button value="Inactivo">Inactivo</mat-radio-button>
+      <mat-error> @if (form.get('estado')?.hasError('required')) { Rellene estado!! } </mat-error>
+    </mat-radio-group>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Términos y Condiciones</mat-label>
+      <textarea
+        matInput
+        formControlName="terminosYCondiciones"
+        rows="4"
+        placeholder="Describe los términos y condiciones"
+      ></textarea>
+      <mat-error>
+        @if (form.get('terminosYCondiciones')?.hasError('required')) { Rellene terminos y
+        condiciones!! }
+        @if (form.get('terminosYCondiciones')?.hasError('minlength')) {
+          Mínimo 10 caracteres
+        }
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Propiedad</mat-label>
+      <mat-select formControlName="propiedad">
+        <mat-option *ngFor="let p of listaPropiedades" [value]="p.idPropiedad">
+          {{ p.titulo }} - {{ p.direccion }}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        @if (form.get('propiedad')?.hasError('required')) { Seleccione propiedad!! }
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
+        {{ edicion ? 'Actualizar' : 'Registrar' }}
+      </button>
+      <button mat-button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,934 @@
+/* Paleta base */
+:root {
+  --primary: #105590;
+  --primary-dark: #0d4a7e;
+  --accent: #007bff;
+  --accent-yellow: #ffc107;
+  --bg: #c6e4ff;
+  --text-dark: #1c1c1c;
+  --sidebar-bg: #101c2a;
+  --sidebar-text: #c8d3e6;
+  --sidebar-active: #007bff;
+}
+
+/* ============================ SIDEBAR ============================= */
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 15px 0;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.logo {
+  text-align: center;
+  padding: 10px 20px 20px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--sidebar-text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.menu li a:hover {
+  background-color: #0b1520;
+  color: white;
+}
+
+.menu li i {
+  margin-right: 10px;
+}
+
+.menu li.active a {
+  background-color: var(--primary);
+  color: white;
+  border-left: 4px solid var(--sidebar-active);
+}
+
+.menu hr {
+  border: 0;
+  border-top: 1px solid #1c334f;
+  margin: 10px 0;
+}
+
+.session-button {
+  padding: 20px 20px 0 20px;
+}
+
+.btn-cerrar-sesion {
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.btn-cerrar-sesion:hover {
+  background-color: #c82333;
+}
+
+/* ============================ CONTENIDO PRINCIPAL ============================= */
+
+.content-area {
+  margin-left: 250px;
+  flex-grow: 1;
+  width: calc(100% - 250px);
+}
+
+main {
+  padding-top: 0 !important;
+}
+
+/* SECCIÓN HOME */
+.section-home {
+  background-color: var(--bg);
+}
+
+/* Hero principal */
+.imagen-fondo {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/VR.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 590px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cuadro {
+  position: absolute;
+  color: #ffffff;
+  font-size: larger;
+  max-width: 600px;
+}
+
+.cuadro h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.cuadro p {
+  font-size: 18px;
+}
+
+.btn-simulation {
+  background-color: var(--primary);
+  height: 60px;
+  border-radius: 10px;
+  font-weight: bolder;
+  padding: 0 30px;
+  color: #ffffff;
+  border-style: none;
+  margin-top: 25px;
+  cursor: pointer;
+}
+
+/* Nosotros */
+.nosotros {
+  display: flex;
+  background-color: var(--primary);
+  justify-content: space-around;
+  color: #ffffff;
+  padding: 60px 40px;
+}
+
+.nosotros > div {
+  max-width: 30%;
+}
+
+.nosotros h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.nosotros p {
+  font-size: 14px;
+}
+
+/* Casa 1 */
+.casa {
+  display: flex;
+  position: relative;
+}
+
+.casa-imagen {
+  background-image: linear-gradient(
+      rgba(46, 43, 43, 0.4),
+      rgba(48, 40, 40, 0.4)
+    ),
+    url(/assets/propiedad4.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 460px;
+  width: 100%;
+}
+
+/* Card azul alineada a paleta */
+.info {
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(16, 85, 144, 0.96),
+    rgba(13, 74, 126, 0.96)
+  );
+  font-size: 16px;
+  padding: 20px 25px;
+  color: #ffffff;
+  border-radius: 16px;
+  max-width: 450px;
+}
+
+.descripcion {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.descripcion h1 {
+  margin-top: 0;
+}
+
+.descripcion p {
+  font-size: 14px;
+}
+
+.btn-simulador button {
+  background-color: var(--primary);
+  border-radius: 8px;
+  border-style: none;
+  padding: 14px 22px;
+  color: #ffffff;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* Opciones */
+.options {
+  background-color: var(--bg);
+}
+
+.cartas {
+  padding: 60px 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.cartas > div {
+  height: 200px;
+  width: 200px;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cartas .card1 {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/card1.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.cartas .card2 {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/card2.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.cartas .card3 {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/card3.jpg);
+  background-size: cover;
+  background-position: center;
+}
+
+.cartas > div:hover {
+  transform: scale(1.05);
+}
+
+/* Casa 2 */
+.casa2 {
+  display: flex;
+  position: relative;
+}
+
+.casa-imagen2 {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/card2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 460px;
+  width: 100%;
+}
+
+/* Card azul segunda casa */
+.info2 {
+  position: absolute;
+  left: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    135deg,
+    rgba(16, 85, 144, 0.96),
+    rgba(13, 74, 126, 0.96)
+  );
+  font-size: 16px;
+  padding: 20px 25px;
+  color: #ffffff;
+  border-radius: 16px;
+  max-width: 450px;
+}
+
+.descripcion2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.btn-simulador2 button {
+  background-color: var(--primary);
+  border-radius: 8px;
+  border-style: none;
+  padding: 14px 22px;
+  color: #ffffff;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* TÍTULOS GENERALES */
+.titulo {
+  text-align: center;
+  font-weight: bolder;
+  padding: 30px;
+}
+
+/* H1 de Casa de Campo Inteligente en blanco */
+.section-edition .titulo h1 {
+  color: #ffffff;
+}
+
+/* FONDO GENERALES */
+.fondo_imagen {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 434px;
+  width: 100%;
+}
+
+/* EDICIÓN */
+.section-edition {
+  background-color: var(--bg);
+}
+
+.section-edition .fondo_imagen {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/propiedad4.jpg);
+}
+
+/* Slider */
+.casa-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.slider-container {
+  max-width: 1300px;
+  height: 500px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgb(84, 84, 84);
+  border-radius: 10px;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 507%;
+  height: 500px;
+  margin-left: -101.5%;
+}
+
+.slider__list {
+  width: 100%;
+}
+
+.slider__img {
+  display: block;
+  width: 99%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider__btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(193, 188, 188, 0.85);
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider__btn:hover {
+  background: #ffffff;
+}
+
+.slider__btn--left {
+  left: 15px;
+}
+
+.slider__btn--right {
+  right: 15px;
+}
+
+/* detalles edición */
+.detalles {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+/* Card alineada a paleta */
+.detalles-edition .info-card {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  border-radius: 20px;
+  padding: 20px;
+  margin-right: 30px;
+  width: 300px;
+  color: #ffffff;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  font-size: 16px;
+}
+
+.info-item i {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+/* simulador tarjeta */
+.detalles .image {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/VR.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 480px;
+  height: 540px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detalles .cuadro {
+  color: #ffffff;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 300px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.texto-imagen {
+  font-family: 'Exo 2', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-sim button {
+  background-color: #000000;
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+/* Botones action */
+.action-buttons {
+  margin-top: 20px;
+}
+
+.action-button {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--accent);
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  padding: 6px 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.action-button i {
+  margin-right: 5px;
+}
+
+.action-button:hover {
+  background-color: #ffffff;
+  color: var(--accent);
+}
+
+/* FAVORITOS */
+.section-favoritos {
+  background-color: var(--bg);
+  padding-bottom: 40px;
+}
+
+.favoritos-bg {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/futurista.jpg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.texto_imagen {
+  color: white;
+  text-align: center;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.lugar {
+  display: flex;
+  width: 90%;
+  max-width: 1480px;
+  height: 233px;
+  border-radius: 20px;
+  background-color: var(--primary);
+  margin: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.imagen-propiedad1,
+.imagen-propiedad-dinamica {
+  width: 70%;
+  height: 235px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.imagen-propiedad1 {
+  background-image: url(/assets/propiedad4.jpg);
+}
+
+.imagen-propiedad1:hover,
+.imagen-propiedad-dinamica:hover {
+  transform: scale(1.05);
+}
+
+.info-propiedad {
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  width: 30%;
+  align-items: center;
+  background-color: var(--primary);
+}
+
+.parrafo {
+  text-align: left;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+.parrafo p {
+  font-family: 'Exo 2', sans-serif;
+}
+
+.info-propiedad button {
+  background-color: var(--accent-yellow);
+  border: none;
+  padding: 10px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.info-propiedad button.add:hover {
+  background-color: #e0a800;
+}
+
+.info-propiedad button.erase:hover {
+  background-color: red;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ARRENDADOR */
+.section-arrendador {
+  background-color: var(--bg);
+  padding-bottom: 40px;
+}
+
+.arrendador-bg {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(/assets/RSSEKMS6I5BL3FCJ6ERJL6G6BI.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-house {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+.add-img {
+  background-image: url(/assets/add1.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 700px;
+}
+
+.add2-img {
+  background-image: url(/assets/add2.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 700px;
+  margin-left: 30px;
+}
+
+.agregar-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-agregar {
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.btn-agregar:hover {
+  background-color: #218838;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal-contenido {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.cerrar {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cerrar:hover,
+.cerrar:focus {
+  color: black;
+}
+
+.modal-contenido h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.modal-contenido form label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.modal-contenido form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-contenido form button {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-contenido form button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* SIMULADOR VR */
+.section-simulador {
+  background: radial-gradient(circle at top, #07152b 0%, #020818 55%, #000000 100%);
+  padding: 60px 20px 80px;
+  text-align: center;
+}
+
+.section-simulador h2 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 26px;
+  letter-spacing: 0.5px;
+}
+
+.section-simulador p {
+  color: #c8d3e6;
+  font-size: 14px;
+}
+
+/* Contenedor centrado del visor 360 */
+.vr-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Tamaño del visor 360 – más grande y responsivo */
+.section-simulador a-scene {
+  width: 100%;
+  max-width: 1200px;
+  height: 520px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.65);
+}
+
+/* FOOTER */
+footer {
+  background-color: #000000;
+  color: #ffffff;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.footer-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-column {
+  flex: 1;
+  padding: 0 15px;
+}
+
+.footer-column h3 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.footer-column a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9em;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+
+.footer-bottom a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive muy básico */
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+    width: 0;
+  }
+
+  .content-area {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .nosotros {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .nosotros > div {
+    max-width: 100%;
+  }
+
+  .info,
+  .info2 {
+    position: static;
+    transform: none;
+    margin: 20px;
+  }
+
+  .home-house {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .add-img,
+  .add2-img {
+    display: none;
+  }
+
+  .lugar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .imagen-propiedad1,
+  .imagen-propiedad-dinamica {
+    width: 100%;
+    height: 200px;
+  }
+
+  .info-propiedad {
+    width: 100%;
+  }
+}

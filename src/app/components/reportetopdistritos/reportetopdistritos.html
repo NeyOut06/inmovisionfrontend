@@ -1,0 +1,26 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <div class="titulo-icono">
+      <mat-icon>bar_chart</mat-icon>
+    </div>
+    <div class="titulo-texto">
+      <h2>Top 5 distritos con más contratos activos</h2>
+      <p>Distritos con mayor cantidad de contratos en estado activo.</p>
+    </div>
+  </div>
+
+  @if (hasData) {
+    <div class="chart-container">
+      <canvas
+        baseChart
+        [data]="{ labels: barChartLabels, datasets: barChartData }"
+        [options]="barChartOptions"
+        [type]="barChartType">
+      </canvas>
+    </div>
+  } @else {
+    <div class="no-data">
+      <p>No hay datos disponibles para este reporte.</p>
+    </div>
+  }
+</div>

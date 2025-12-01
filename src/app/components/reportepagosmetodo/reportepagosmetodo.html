@@ -1,0 +1,54 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <div class="titulo-icono">
+      <mat-icon>pie_chart</mat-icon>
+    </div>
+    <div class="titulo-texto">
+      <h2>Pagos por método de pago</h2>
+      <p>Distribución del monto total pagado según método de pago.</p>
+    </div>
+  </div>
+
+  @if (hasData) {
+    <div class="reporte-contenido">
+      <div class="chart-card">
+        <div class="chart-container">
+          <canvas
+            baseChart
+            [data]="doughnutChartData"
+            [options]="doughnutChartOptions"
+            [type]="doughnutChartType">
+          </canvas>
+        </div>
+      </div>
+
+      <div class="tabla-card">
+        <h3>Detalle</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Método de pago</th>
+              <th class="col-num">Cantidad de pagos</th>
+              <th class="col-num">Monto total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of detalle; track item.metodoPago) {
+              <tr>
+                <td>{{ item.metodoPago }}</td>
+                <td class="col-num">{{ item.cantidadPagos }}</td>
+                <td class="col-num">
+                  {{ item.montoTotal | currency:'PEN':'symbol':'1.2-2' }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="sin-datos">
+      <p>No hay datos disponibles para este reporte.</p>
+    </div>
+  }
+</div>

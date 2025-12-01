@@ -1,0 +1,161 @@
+/* ================================
+   LISTA FAVORITOS - INSERTAR
+   INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* Card centrada */
+.container {
+  max-width: 520px;
+  margin: 32px auto;
+  background: #041528;
+  border-radius: 18px;
+  padding: 20px 22px 24px;
+  border: 1px solid rgba(124, 194, 255, 0.25);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+}
+
+/* Título */
+.container h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Formulario */
+.example-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+/* MAT-FORM-FIELD DARK STYLE */
+:host ::ng-deep .mat-mdc-form-field {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--filled {
+  background-color: #0b2745 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(124, 194, 255, 0.45) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+  padding-inline: 10px !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-infix {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 34px !important;
+}
+
+/* Textarea un poco más alta */
+:host ::ng-deep textarea.mat-mdc-input-element {
+  min-height: 70px !important;
+  max-height: 110px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Sin línea inferior */
+:host ::ng-deep .mdc-text-field--filled .mdc-line-ripple {
+  display: none !important;
+}
+
+/* Label e input más legibles */
+:host ::ng-deep .mat-mdc-form-field-label {
+  color: #c8d3e6 !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+:host ::ng-deep .mat-mdc-input-element {
+  color: #f4fbff !important;
+  font-size: 0.86rem;
+}
+
+:host ::ng-deep .mat-mdc-input-element::placeholder {
+  color: #9fb4d4 !important;
+}
+
+/* Errores */
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin: 0 4px;
+  min-height: 16px;
+}
+
+:host ::ng-deep .mat-mdc-form-field-error {
+  color: #ff8b8b !important;
+  font-size: 0.74rem;
+}
+
+/* BOTONES */
+.container form > div[style*='margin-top'] {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Botón principal (Registrar / Editar) */
+.container button[matButton] {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 6px 22px !important;
+  font-size: 0.86rem !important;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(180, 221, 255, 0.6);
+  text-transform: none !important;
+}
+
+.container button[matButton]:hover {
+  background-color: #1470c1 !important;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  :host {
+    padding: 12px;
+  }
+
+  .container {
+    margin: 20px auto;
+    padding: 16px 14px 18px;
+  }
+
+  .container h2 {
+    font-size: 18px;
+  }
+}
+
+.btn-cancelar {
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-size: 0.84rem !important;
+  font-weight: 500;
+  text-transform: none !important;
+  border-color: rgba(255, 139, 139, 0.8) !important;
+  color: #ff8b8b !important;
+  background: transparent !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: all 0.18s ease;
+}
+
+.btn-cancelar:hover {
+  background: rgba(255, 107, 107, 0.08) !important;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  border-color: #ff6b6b !important;
+  color: #ffd1d1 !important;
+}
+

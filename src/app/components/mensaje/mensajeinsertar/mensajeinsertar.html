@@ -1,0 +1,105 @@
+<!-- src/app/components/mensaje/mensajeinsertar/mensajeinsertar.html -->
+<div class="chat-wrapper">
+  <!-- HEADER -->
+  <header class="chat-header">
+    <button mat-icon-button class="btn-back" (click)="volver()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+
+    <div class="header-main">
+      <div class="property-thumb">
+        <img
+          [src]="(propiedad.imagenes.length || 0) > 0 ? propiedad.imagenes[0].urlImagen : 'assets/propiedad4.jpg'"
+          [alt]="propiedad.titulo || 'Propiedad'"
+        />
+      </div>
+      <div class="property-info">
+        <h2>{{ propiedad.titulo || 'Propiedad' }}</h2>
+        <p>
+          <mat-icon>location_on</mat-icon>
+          {{ propiedad.distrito.nombreDistrito || 'Sin ubicación' }}
+        </p>
+      </div>
+    </div>
+
+    <div class="header-chip">
+      <span>Chat activo</span>
+    </div>
+  </header>
+
+  <!-- PANEL DE MENSAJES -->
+  <section class="messages-panel">
+    @if (mensajes.length === 0) {
+      <div class="empty-messages">
+        <mat-icon>chat_bubble_outline</mat-icon>
+        <p>No hay mensajes aún</p>
+        <span>Escribe el primero sobre esta propiedad</span>
+      </div>
+    }
+
+    @for (mensaje of mensajes; track mensaje.idMensaje) {
+      <div class="message-row" [class.my-message]="esMiMensaje(mensaje)">
+        <div class="message-bubble">
+          <div class="message-header">
+            <span class="sender">{{ mensaje.usuario.nombre }}</span>
+            <span class="time">{{ formatearFecha(mensaje.enviadoEn) }}</span>
+          </div>
+          <p class="message-text">
+            {{ mensaje.contenido }}
+          </p>
+
+          @if (esMiMensaje(mensaje)) {
+            <button
+              mat-icon-button
+              class="btn-delete-msg"
+              (click)="eliminar(mensaje.idMensaje)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          }
+        </div>
+      </div>
+    }
+  </section>
+
+  <!-- INPUT BAR -->
+  <footer class="chat-input-bar">
+    <form [formGroup]="form" (ngSubmit)="enviarMensaje()" class="input-form">
+      <!-- COMBO USUARIO -->
+      <div class="user-select-wrapper">
+        <mat-icon class="user-icon">person</mat-icon>
+        <mat-select
+          formControlName="usuarioId"
+          class="user-select"
+          placeholder="Selecciona usuario"
+          panelClass="user-select-panel"
+        >
+          @for (u of listaUsuarios; track u.idUser) {
+            <mat-option [value]="u.idUser">
+              {{ u.nombre }} {{ u.apellido }}
+            </mat-option>
+          }
+        </mat-select>
+      </div>
+
+      <!-- INPUT MENSAJE -->
+      <input
+        type="text"
+        class="message-input"
+        formControlName="contenido"
+        placeholder="Escribe tu mensaje..."
+        autocomplete="off"
+      />
+
+      <!-- BOTÓN ENVIAR -->
+      <button
+        mat-icon-button
+        type="submit"
+        class="btn-send"
+        [disabled]="form.invalid"
+      >
+        <mat-icon>send</mat-icon>
+      </button>
+    </form>
+  </footer>
+</div>

@@ -1,0 +1,69 @@
+<div>
+    <h2>Lista de Usuarios</h2>
+
+    <div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="c1">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let element"> {{element.idUser}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="c2">
+                <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="c3">
+                <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="c4">
+                <th mat-header-cell *matHeaderCellDef> Correo </th>
+                <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="c5">
+                <th mat-header-cell *matHeaderCellDef> Telefono </th>
+                <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+            </ng-container>
+            <ng-container matColumnDef="c6">
+                <th mat-header-cell *matHeaderCellDef> FotoURL </th>
+                <td mat-cell *matCellDef="let element"> {{element.fotourl}} </td>
+            </ng-container>
+            
+            <ng-container matColumnDef="c7">
+                <th mat-header-cell *matHeaderCellDef>Actualizar</th>
+                <td mat-cell *matCellDef="let element">
+                <button 
+                matButton
+                [routerLink]="['edits',element.idUser]"
+                >
+                 <mat-icon>edit</mat-icon>
+                </button>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="c8">
+                <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+                <td mat-cell *matCellDef="let element">
+                <button 
+                 matButton
+                (click)="eliminar(element.idUser)"
+                >
+                <mat-icon>delete</mat-icon>
+                </button>
+                </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>    
+    </div>
+    
+    <div class="actions">
+        <button mat-menu-item routerLink="/usuarios/nuevo">Registrar Usuario</button>
+    </div>
+
+</div>

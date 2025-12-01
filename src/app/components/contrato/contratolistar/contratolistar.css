@@ -1,0 +1,330 @@
+/* ================================
+   CONTRATOS LISTAR - INMOVISION UI (CARDS)
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24px 32px;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Título */
+.container h2 {
+  margin: 0 0 28px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Grid de cards */
+.contracts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+/* Card principal */
+.contract-card {
+  background: #041528;
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contract-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 194, 255, 0.45);
+  box-shadow: 0 16px 40px rgba(124, 194, 255, 0.15);
+}
+
+/* Header de card con icono */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(124, 194, 255, 0.15);
+}
+
+.card-icon {
+  font-size: 32px;
+  color: #7cc2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(124, 194, 255, 0.1);
+  border-radius: 12px;
+}
+
+.card-title {
+  flex: 1;
+}
+
+.card-title h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-id {
+  font-size: 0.8rem;
+  color: #8fa6c5;
+}
+
+/* Tipo badge */
+.type-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.type-alquiler {
+  background: rgba(76, 175, 80, 0.15);
+  color: #9af7a0;
+  border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.type-venta {
+  background: rgba(33, 150, 243, 0.15);
+  color: #7cc2ff;
+  border: 1px solid rgba(124, 194, 255, 0.4);
+}
+
+/* Estado badge */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status-activo {
+  background: rgba(76, 175, 80, 0.15);
+  color: #9af7a0;
+  border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.status-inactivo {
+  background: rgba(244, 67, 54, 0.12);
+  color: #ff9a9a;
+  border: 1px solid rgba(244, 67, 54, 0.4);
+}
+
+/* Contenedor de badges */
+.badges-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Sección de atributos */
+.card-attributes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.attribute {
+  background: rgba(11, 39, 69, 0.6);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(124, 194, 255, 0.12);
+}
+
+.attribute-label {
+  font-size: 0.75rem;
+  color: #8fa6c5;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.attribute-value {
+  font-size: 0.9rem;
+  color: #e5f0ff;
+  font-weight: 600;
+}
+
+.attribute.full {
+  grid-column: 1 / -1;
+}
+
+/* Términos y condiciones */
+.card-terms {
+  background: rgba(6, 26, 51, 0.8);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(124, 194, 255, 0.12);
+  margin-top: 4px;
+}
+
+.terms-label {
+  font-size: 0.75rem;
+  color: #8fa6c5;
+  font-weight: 500;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.terms-text {
+  font-size: 0.8rem;
+  color: #b4ddff;
+  line-height: 1.4;
+  max-height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* Propiedad info */
+.card-property {
+  background: rgba(16, 85, 144, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(124, 194, 255, 0.2);
+  margin-top: 4px;
+}
+
+.property-label {
+  font-size: 0.75rem;
+  color: #8fa6c5;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.property-value {
+  font-size: 0.85rem;
+  color: #7cc2ff;
+  font-weight: 600;
+}
+
+/* Footer de card con acciones */
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(124, 194, 255, 0.15);
+}
+
+/* Botones de acción */
+.card-footer button {
+  min-width: 36px;
+  height: 36px;
+  width: 36px;
+  padding: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #0b2745;
+  border: 1px solid rgba(124, 194, 255, 0.4);
+  transition: all 0.18s ease;
+  cursor: pointer;
+  color: #7cc2ff;
+}
+
+.card-footer button mat-icon {
+  font-size: 18px;
+  color: #7cc2ff;
+}
+
+.card-footer button:hover {
+  background: #105590;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(124, 194, 255, 0.3);
+  border-color: rgba(180, 221, 255, 0.6);
+}
+
+/* ================================
+   BOTÓN REGISTRAR
+   ================================ */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.actions button[mat-menu-item] {
+  background: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 8px 20px !important;
+  font-size: 0.88rem !important;
+  font-weight: 600;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.75);
+  transition: all 0.18s ease;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions button[mat-menu-item] mat-icon {
+  font-size: 20px;
+}
+
+.actions button[mat-menu-item]:hover {
+  background: #1470c1 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.85);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 1200px) {
+  .contracts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 16px;
+  }
+
+  .container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .contracts-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card-attributes {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

@@ -1,0 +1,211 @@
+/* REPORTE: MONTO PROMEDIO POR TIPO DE CONTRATO */
+
+/* CONTENEDOR GENERAL -------------------------------------------------- */
+
+.reporte-wrapper {
+  padding: 1.5rem 2rem;
+  /* Fondo con gradiente oscuro de Inmovision */
+  background: linear-gradient(135deg, #0b4f82, #09385c);
+  min-height: 100vh;
+  color: #ffffff;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif; /* Consistencia en la fuente */
+}
+
+/* HEADER -------------------------------------------------------------- */
+
+.reporte-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.titulo-icono {
+  /* Mantenemos el estilo simple del icono, asumiendo que el fondo es oscuro */
+  color: #ffffff;
+}
+
+.reporte-header mat-icon {
+  font-size: 28px;
+}
+
+.reporte-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.titulo-texto p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #c1d7f3; /* Color suave para subtítulo */
+}
+
+/* FILTROS -------------------------------------------------------------- */
+
+.filtros-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filtro-field {
+  min-width: 220px;
+}
+
+/* Estilo del form-field de filtros para fondo oscuro (opcional, si se necesita) */
+.filtro-field mat-form-field {
+  background: rgba(3, 26, 56, 0.6);
+  border-radius: 4px; 
+  padding: 0 8px 0;
+}
+
+/* Botones (Manteniendo tus estilos definidos) */
+.btn-primario {
+  background-color: #4f8bc9;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+}
+
+.btn-primario:hover {
+  background-color: #3c6fa3;
+}
+
+.btn-secundario {
+  border-color: #ffffff;
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-secundario:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* CONTENIDO ------------------------------------------------------------ */
+
+.reporte-contenido {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.8fr);
+  gap: 1.5rem;
+}
+
+/* Tarjetas (Glassmorphism con fondo muy oscuro) */
+.chart-card,
+.tabla-card,
+.panel-card { 
+  background: rgba(7, 32, 54, 0.9);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+}
+
+.chart-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 🔹 Contenedor del gráfico un poco más chico */
+.chart-container {
+  width: 70%;          /* antes 100% */
+  max-width: 420px;    /* límite máx. de tamaño */
+  min-height: 260px;   /* más bajito */
+  max-height: 420px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Forzar al canvas a respetar el tamaño del contenedor */
+.chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* TABLA --------------------------------------------------------------- */
+
+.tabla-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;       /* un poco más pequeña que antes */
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;     /* más compacto */
+  table-layout: fixed;   /* CLAVE: respeta anchos definidos */
+}
+
+thead tr {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+th,
+td {
+  /* celdas más compactas */
+  padding: 0.3rem 0.45rem;
+  text-align: left;
+}
+
+/* CLAVE: DEFINICIÓN DE ANCHOS PARA EVITAR TRUNCAMIENTO */
+/* Columna Tipo (35%) */
+.tabla-card th:first-child,
+.tabla-card td:first-child {
+  width: 35%; 
+}
+
+/* Columna Promedio Monto (65%) */
+.tabla-card th:last-child,
+.tabla-card td:last-child {
+  width: 65%;
+}
+
+/* Clase para alinear texto (montos) a la derecha */
+.text-right {
+  text-align: right !important;
+}
+
+/* Aseguramos la alineación en el encabezado de la columna */
+.tabla-card th.text-right {
+  text-align: right !important;
+}
+
+/* Estilo para destacar el valor del promedio */
+.tabla-card td.text-right {
+  font-weight: 500;
+  color: #8bc9ff;
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Sin datos */
+.sin-datos {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* RESPONSIVE ---------------------------------------------------------- */
+@media (max-width: 960px) {
+  .reporte-contenido {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,86 @@
+/* REPORTE: TOP 5 DISTRITOS CON MÁS CONTRATOS ACTIVOS ------------------ */
+
+/* CONTENEDOR GENERAL */
+
+.reporte-wrapper {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #0b4f82, #09385c);
+  min-height: 100vh;
+  color: #ffffff;
+  box-sizing: border-box;
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+/* HEADER */
+
+.reporte-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.titulo-icono {
+  color: #ffffff;
+}
+
+.reporte-header mat-icon {
+  font-size: 28px;
+}
+
+.titulo-texto h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.titulo-texto p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #c1d7f3; /* subtítulo suave */
+}
+
+/* CARD DEL GRÁFICO ---------------------------------------------------- */
+
+.chart-container {
+  background: rgba(7, 32, 54, 0.9);       /* mismo tono que las otras cards */
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 0.5rem;
+}
+
+/* tamaño del canvas dentro de la card */
+.chart-container canvas {
+  width: 100% !important;
+  max-width: 1100px;
+  max-height: 420px;
+}
+
+/* MENSAJE SIN DATOS --------------------------------------------------- */
+
+.no-data {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #e0e0e0;
+  opacity: 0.9;
+}
+
+/* RESPONSIVE ---------------------------------------------------------- */
+
+@media (max-width: 960px) {
+  .reporte-wrapper {
+    padding: 1.25rem 1rem;
+  }
+
+  .chart-container {
+    padding: 1rem;
+  }
+}

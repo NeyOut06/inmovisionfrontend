@@ -1,0 +1,71 @@
+<div class="container">
+  <div style="text-align: center; margin: 20px">
+    <h2>Lista de Calificaciones</h2>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- ID -->
+    <ng-container matColumnDef="a">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let c">{{ c.idCalificacion }}</td>
+    </ng-container>
+
+    <!-- Puntuación -->
+    <ng-container matColumnDef="b">
+      <th mat-header-cell *matHeaderCellDef>Puntuación</th>
+      <td mat-cell *matCellDef="let c">{{ c.puntuacion }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="c">
+      <th mat-header-cell *matHeaderCellDef>Comentario</th>
+      <td mat-cell *matCellDef="let c">{{ c.comentario }}</td>
+    </ng-container>
+
+    <!-- Fecha -->
+    <ng-container matColumnDef="d">
+      <th mat-header-cell *matHeaderCellDef>Fecha</th>
+      <td mat-cell *matCellDef="let c">
+        {{ c.fecha | date : 'dd/MM/yyyy' }}
+      </td>
+    </ng-container>
+
+    <!-- Usuario -->
+    <ng-container matColumnDef="e">
+      <th mat-header-cell *matHeaderCellDef>Usuario</th>
+      <td mat-cell *matCellDef="let c">{{ c.usuario.nombre }}</td>
+    </ng-container>
+
+    <!-- Propiedad -->
+    <ng-container matColumnDef="f">
+      <th mat-header-cell *matHeaderCellDef>Propiedad</th>
+      <td mat-cell *matCellDef="let c">{{ c.propiedad.direccion }}</td>
+    </ng-container>
+
+    <!-- Editar -->
+    <ng-container matColumnDef="g">
+      <th mat-header-cell *matHeaderCellDef>Editar</th>
+      <td mat-cell *matCellDef="let c">
+        <button matButton [routerLink]="['edits', c.idCalificacion]">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Eliminar -->
+    <ng-container matColumnDef="h">
+      <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+      <td mat-cell *matCellDef="let c">
+        <button matButton (click)="eliminar(c.idCalificacion)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div class="actions">
+    <button mat-menu-item routerLink="/calificaciones/nuevo">Registrar Calificacion</button>
+  </div>
+</div>

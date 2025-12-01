@@ -1,0 +1,89 @@
+<!-- contratolistar.component.html -->
+<div class="container">
+  <h2>📋 Gestión de Contratos</h2>
+
+  <div class="contracts-grid">
+    <!-- Card de Contrato -->
+    @for (element of contratos; track element.idContrato) {
+    <div class="contract-card">
+      
+      <!-- Header con icono -->
+      <div class="card-header">
+        <div class="card-icon">
+          <mat-icon>description</mat-icon>
+        </div>
+        <div class="card-title">
+          <h3>Contrato #{{ element.idContrato }}</h3>
+          <span class="card-id">ID: {{ element.idContrato }}</span>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="badges-container">
+        <span class="type-badge" [ngClass]="element.tipo === 'Alquiler' ? 'type-alquiler' : 'type-venta'">
+          📄 {{ element.tipo }}
+        </span>
+        <span class="status-badge" [ngClass]="element.estado === 'Activo' ? 'status-activo' : 'status-inactivo'">
+          {{ element.estado === 'Activo' ? '✓ Activo' : '✕ Inactivo' }}
+        </span>
+      </div>
+
+      <!-- Atributos principales -->
+      <div class="card-attributes">
+        <div class="attribute">
+          <div class="attribute-label">📅 Fecha Inicio</div>
+          <div class="attribute-value">{{ element.fechaInicio | date: 'dd/MM/yyyy' }}</div>
+        </div>
+
+        <div class="attribute">
+          <div class="attribute-label">📅 Fecha Fin</div>
+          <div class="attribute-value">{{ element.fechaFin | date: 'dd/MM/yyyy' }}</div>
+        </div>
+
+        <div class="attribute full">
+          <div class="attribute-label">💰 Monto</div>
+          <div class="attribute-value">S/. {{ element.monto | number: '1.2-2' }}</div>
+        </div>
+      </div>
+
+      <!-- Términos y Condiciones -->
+      <div class="card-terms">
+        <span class="terms-label">📝 Términos y Condiciones</span>
+        <div class="terms-text">{{ element.terminosYCondiciones }}</div>
+      </div>
+
+      <!-- Propiedad -->
+      <div class="card-property">
+        <div class="property-label">🏠 Propiedad</div>
+        <div class="property-value">{{ element.propiedad.titulo }}</div>
+      </div>
+
+      <!-- Acciones -->
+      <div class="card-footer">
+        <button 
+          matButton 
+          [routerLink]="['edits', element.idContrato]"
+          title="Editar contrato">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button 
+          matButton 
+          (click)="eliminar(element.idContrato)"
+          title="Eliminar contrato">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+
+    
+  </div>
+}
+
+  <!-- Botón Registrar -->
+  <div class="actions">
+    <button mat-menu-item routerLink="/contratos/nuevo">
+      <mat-icon>add_circle</mat-icon>
+      Registrar Contrato
+    </button>
+  </div>
+
+</div>

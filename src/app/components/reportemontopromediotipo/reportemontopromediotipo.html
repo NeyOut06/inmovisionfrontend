@@ -1,0 +1,57 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <div class="titulo-icono">
+      <mat-icon>pie_chart</mat-icon>
+    </div>
+    <div class="titulo-texto">
+      <h2>Monto promedio por tipo de contrato</h2>
+      <p>Promedio de montos según el tipo de contrato registrado.</p>
+    </div>
+  </div>
+
+  <div class="filtros-container">
+    <div class="filtro-field"></div>
+    <div class="filtro-field"></div>
+    <div class="filtros-acciones"></div>
+  </div>
+
+  <div *ngIf="hasData; else noData" class="reporte-contenido">
+    <div class="panel-card chart-card">
+      <div class="chart-container">
+        <canvas
+          baseChart
+          [data]="doughnutChartData"
+          [options]="doughnutChartOptions"
+          [type]="doughnutChartType"
+        >
+        </canvas>
+      </div>
+    </div>
+
+    <div class="panel-card tabla-card">
+      <h3>Detalle</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th class="text-right">Promedio Monto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of detalle">
+            <td>{{ item.tipo }}</td>
+            <td class="text-right">
+              {{ item.promedioMonto | currency : 'USD' : 'symbol' : '1.0-2' }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="sin-datos">
+      <p>No hay datos de montos promedio disponibles.</p>
+    </div>
+  </ng-template>
+</div>

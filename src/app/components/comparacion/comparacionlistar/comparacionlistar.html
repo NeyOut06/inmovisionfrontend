@@ -1,0 +1,131 @@
+<!-- comparacionlistar.component.html -->
+
+<div class="comp-list-page">
+  <div class="comp-list-card">
+    <!-- HEADER -->
+    <header class="comp-header">
+      <div class="comp-header-left">
+        <div class="comp-header-icon">
+          <mat-icon>compare_arrows</mat-icon>
+        </div>
+        <div>
+          <h2 class="comp-title">Comparaciones de propiedades</h2>
+          <p class="comp-subtitle">
+            Compara visualmente dos propiedades seleccionadas por cada usuario.
+          </p>
+        </div>
+      </div>
+
+      <div class="comp-header-right">
+        <button
+          mat-flat-button
+          color="primary"
+          routerLink="/comparaciones/nuevo"
+        >
+          <mat-icon>add</mat-icon>
+          <span>Nueva comparación</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- LISTA DE COMPARACIONES -->
+    <div class="comp-list">
+      @if (comparaciones.length === 0) {
+        <div class="empty-state">
+          <mat-icon>compare_arrows</mat-icon>
+          <p>No hay comparaciones registradas</p>
+        </div>
+      }
+
+      @for (element of comparaciones; track element.idComparacion) {
+        <div class="comp-row">
+          <!-- Columna usuario / id -->
+          <div class="comp-user">
+            <div class="comp-id">#{{ element.idComparacion }}</div>
+            <span class="user-chip">
+              <mat-icon class="chip-icon">person</mat-icon>
+              {{ element.usuario.nombre }} {{ element.usuario.apellido }}
+            </span>
+          </div>
+
+          <!-- Propiedad 1 vs Propiedad 2 -->
+          <div class="comp-props">
+          <!-- Propiedad 1 -->
+            <div class="prop-card">
+              <div class="prop-image-wrapper">
+                <img
+                  [src]="
+                    element.propiedad1.imagenes && element.propiedad1.imagenes.length > 0
+                      ? element.propiedad1.imagenes[0].urlImagen
+                      : 'https://via.placeholder.com/260x150?text=Sin+imagen'
+                  "
+                  [alt]="element.propiedad1.titulo"
+                />
+              </div>
+              <div class="prop-body">
+                <h3 class="prop-title">{{ element.propiedad1.titulo }}</h3>
+                <p class="prop-text">
+                  <span class="prop-pill price-pill">
+                    S/ {{ element.propiedad1.precio | number: '1.2-2' }}
+                  </span>
+                  <span class="prop-pill district-pill">
+                    {{ element.propiedad1.distrito.nombreDistrito }}
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <!-- VS -->
+            <div class="vs-pill">
+              VS
+            </div>
+
+            <!-- Propiedad 2 -->
+            <div class="prop-card">
+              <div class="prop-image-wrapper">
+                <img
+                  [src]="
+                    element.propiedad2.imagenes && element.propiedad2.imagenes.length > 0
+                      ? element.propiedad2.imagenes[0].urlImagen
+                      : 'https://via.placeholder.com/260x150?text=Sin+imagen'
+                  "
+                  [alt]="element.propiedad2.titulo"
+                />
+              </div>
+              <div class="prop-body">
+                <h3 class="prop-title">{{ element.propiedad2.titulo }}</h3>
+                <p class="prop-text">
+                  <span class="prop-pill price-pill">
+                    S/ {{ element.propiedad2.precio | number: '1.2-2' }}
+                  </span>
+                  <span class="prop-pill district-pill">
+                    {{ element.propiedad2.distrito.nombreDistrito }}
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acciones -->
+          <div class="comp-actions">
+            <button
+              mat-icon-button
+              (click)="eliminar(element.idComparacion)"
+              title="Eliminar comparación"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+
+            <button
+              mat-icon-button
+              [routerLink]="['edits', element.idComparacion]"
+              title="Editar comparación"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

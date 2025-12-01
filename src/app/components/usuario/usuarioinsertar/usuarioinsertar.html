@@ -1,0 +1,93 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="registro-wrapper">
+  <div class="registro-card">
+
+    <div class="registro-logo">
+      <img src="assets/inmovisionlogo.png" alt="Logo" />
+    </div>
+
+    <div class="registro-header">
+      <h2>{{ edicion ? 'Editar usuario' : 'Registro de usuarios' }}</h2>
+      <p>Completa los datos para crear o actualizar tu cuenta.</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="aceptar()">
+
+      <div class="form-row">
+        <div class="col">
+          <label>Nombre*</label>
+          <input class="dark-input" formControlName="nombre" />
+          <small class="error" *ngIf="form.get('nombre')?.hasError('required')">Ingrese el nombre</small>
+          <small class="error" *ngIf="form.get('nombre')?.hasError('minlength')">Mínimo 2 caracteres</small>
+          <small class="error" *ngIf="form.get('nombre')?.hasError('pattern')">Solo letras permitidas</small>
+        </div>
+
+        <div class="col">
+          <label>Apellido*</label>
+          <input class="dark-input" formControlName="apellido" />
+          <small class="error" *ngIf="form.get('apellido')?.hasError('required')">Ingrese el apellido</small>
+          <small class="error" *ngIf="form.get('apellido')?.hasError('minlength')">Mínimo 2 caracteres</small>
+          <small class="error" *ngIf="form.get('apellido')?.hasError('pattern')">Solo letras permitidas</small>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <label>Correo*</label>
+          <input class="dark-input" type="email" formControlName="correo" />
+          <small class="error" *ngIf="form.get('correo')?.hasError('required')">Ingrese el correo</small>
+          <small class="error" *ngIf="form.get('correo')?.hasError('email')">Correo inválido</small>
+        </div>
+
+        <div class="col">
+          <label>Nombre de usuario*</label>
+          <input class="dark-input" formControlName="username" />
+          <small class="error" *ngIf="form.get('username')?.hasError('required')">Ingrese el usuario</small>
+          <small class="error" *ngIf="form.get('username')?.hasError('minlength')">Mínimo 4 caracteres</small>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <label>Contraseña*</label>
+          <input class="dark-input" type="password" formControlName="password" />
+          <small class="error" *ngIf="form.get('password')?.hasError('required')">Ingrese la contraseña</small>
+          <small class="error" *ngIf="form.get('password')?.hasError('minlength')">Mínimo 6 caracteres</small>
+          <small class="error" *ngIf="form.get('password')?.hasError('pattern')">Debe incluir mayúscula y número</small>
+        </div>
+
+        <div class="col">
+          <label>Teléfono*</label>
+          <input class="dark-input" type="tel" formControlName="telefono" />
+          <small class="error" *ngIf="form.get('telefono')?.hasError('required')">Ingrese el teléfono</small>
+          <small class="error" *ngIf="form.get('telefono')?.hasError('pattern')">Debe tener 9 dígitos</small>
+          <small class="error" *ngIf="form.get('telefono')?.value && form.get('telefono')?.invalid">Solo números permitidos</small>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col">
+          <label>Foto (URL)*</label>
+          <input class="dark-input" formControlName="fotourl" />
+          <small class="error" *ngIf="form.get('fotourl')?.hasError('required')">Ingrese la URL</small>
+          <small class="input-hint" *ngIf="!form.get('fotourl')?.invalid">Debe ser un enlace válido</small>
+        </div>
+
+        <div class="col">
+          <label>Fecha de registro*</label>
+          <input class="dark-input" [matDatepicker]="picker" formControlName="fecha_registro" readonly/>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <small class="error" *ngIf="form.get('fecha_registro')?.hasError('required')">Fecha obligatoria</small>
+        </div>
+      </div>
+
+      <div class="button-group">
+        <button mat-raised-button class="btn-guardar" type="submit" [disabled]="!form.valid">Guardar</button>
+        <button mat-stroked-button class="btn-cancelar" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

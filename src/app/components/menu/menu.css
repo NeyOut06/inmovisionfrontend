@@ -1,0 +1,336 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  height: 72px;
+  box-sizing: border-box;
+}
+
+.logo-btn {
+  padding: 0;
+  margin-right: 10px;
+  min-width: 48px;
+}
+
+.logo-img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 8px rgba(79,139,201,0.7));
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+}
+
+.user-info-top {
+  margin-top: 3px;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.menu-section {
+  padding: 0 8px;
+  margin-top: 6px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 12px;
+  margin: 4px 4px;
+  border-radius: 10px;
+  color: white !important;
+  text-decoration: none;
+  font-weight: 500;
+  justify-content: flex-start;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.menu-item mat-icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: white;
+}
+
+.menu-item:hover:not(.active-link) {
+  background-color: #050c1a;
+  transform: translateX(2px);
+  box-shadow: 0 0 10px rgba(79,139,201,0.35);
+}
+
+.menu-item.active-link {
+  background-color: #105590 !important;
+  color: white !important;
+  font-weight: 600;
+  border: 1px solid #7cc2ff;
+  box-shadow: 0 0 12px rgba(16,85,144,0.7);
+}
+
+.logout-button {
+  color: #ff6b6b !important;
+  border: 1.5px solid #ff6b6b !important;
+  background: transparent !important;
+}
+
+.logout-button mat-icon {
+  color: #ff6b6b;
+}
+
+.logout-button:hover {
+  background: rgba(255,107,107,0.08) !important;
+  box-shadow: 0 0 8px rgba(255,107,107,0.4);
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.bottom-section {
+  padding-bottom: 16px;
+}
+
+.main-content {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.main-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 20px;
+  box-shadow: 0 0 6px rgba(79,139,201,0.5);
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: #02030a;
+}
+
+.main-content {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8bc9 #02030a;
+}
+
+* {
+  scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.page-login mat-sidenav {
+  display: none !important;
+}
+
+/* ===== Ajuste de contenido según ancho del sidenav ===== */
+.sidenav-container .mat-drawer-content {
+  margin-left: 300px !important;
+  transition: margin-left 0.25s ease-in-out;
+}
+
+.custom-sidenav.collapsed ~ .mat-drawer-content {
+  margin-left: 90px !important;
+}
+
+/* Contenedor general */
+.sidenav-container {
+  width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  padding-left: 0;
+}
+
+/* SIDENAV IZQUIERDO */
+.custom-sidenav {
+  background-color: #07152b;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-right: none;
+  transition: width 0.25s ease-in-out;
+  height: 100vh;
+  box-sizing: border-box;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 4px 0 18px rgba(0, 0, 0, 0.6);
+}
+
+.custom-sidenav.collapsed {
+  width: 90px;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+
+/* Scrollbar del sidenav */
+.custom-sidenav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-sidenav::-webkit-scrollbar-track {
+  background: #02030a;
+}
+
+.custom-sidenav::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(79, 139, 201, 0.7);
+}
+
+.custom-sidenav::-webkit-scrollbar-thumb:hover {
+  background: #7cc2ff;
+}
+
+.custom-sidenav {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8bc9 #02030a;
+}
+
+.bottom-section {
+  padding: 0 8px 16px;
+  box-sizing: border-box;
+}
+
+.custom-sidenav .menu-item {
+  max-width: 100%;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.custom-sidenav .logout-button {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* ========================================
+   🎨 MENÚ REPORTES - PALETA INMOVISION
+   ======================================== */
+
+/* Panel del menú desplegable - SIN SCROLL HORIZONTAL */
+::ng-deep .reportes-menu-panel {
+  background-color: #07152b !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(124, 194, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
+  margin-top: 8px !important;
+  padding: 8px 0 !important;
+  min-width: 280px !important;
+  max-width: 320px !important;
+  max-height: 500px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important; /* 👈 ELIMINA SCROLL HORIZONTAL */
+}
+
+/* Items del menú */
+::ng-deep .reportes-menu-panel .mat-mdc-menu-item {
+  background-color: transparent !important;
+  color: #e5f0ff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  height: 44px !important;
+  padding: 0 16px !important;
+  margin: 2px 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important; /* 👈 EVITA QUE EL TEXTO SE DESBORDE */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Hover en items */
+::ng-deep .reportes-menu-panel .mat-mdc-menu-item:hover {
+  background-color: #050c1a !important;
+  box-shadow: 0 0 8px rgba(79, 139, 201, 0.4) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Iconos dentro del menú */
+::ng-deep .reportes-menu-panel .mat-mdc-menu-item mat-icon {
+  color: #7cc2ff !important;
+  margin-right: 12px !important;
+  font-size: 20px !important;
+  flex-shrink: 0 !important; /* 👈 EVITA QUE EL ÍCONO SE COMPRIMA */
+}
+
+/* Texto del item */
+::ng-deep .reportes-menu-panel .mat-mdc-menu-item span {
+  color: #e5f0ff !important;
+}
+
+/* Hover en iconos */
+::ng-deep .reportes-menu-panel .mat-mdc-menu-item:hover mat-icon {
+  color: #b4ddff !important;
+}
+
+/* Scrollbar VERTICAL del menú reportes (personalizado) */
+::ng-deep .reportes-menu-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+::ng-deep .reportes-menu-panel::-webkit-scrollbar-track {
+  background: #02030a;
+}
+
+::ng-deep .reportes-menu-panel::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(79, 139, 201, 0.7);
+}
+
+::ng-deep .reportes-menu-panel::-webkit-scrollbar-thumb:hover {
+  background: #7cc2ff;
+}
+
+/* Firefox scrollbar */
+::ng-deep .reportes-menu-panel {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8bc9 #02030a;
+}
+
+/* Animación de entrada del menú */
+::ng-deep .reportes-menu-panel.mat-mdc-menu-panel {
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ripple effect con colores Inmovision */
+::ng-deep .reportes-menu-panel .mat-mdc-menu-item .mat-ripple-element {
+  background-color: rgba(124, 194, 255, 0.2) !important;
+}

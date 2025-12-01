@@ -1,0 +1,202 @@
+/* ================================
+   LISTA FAVORITOS - LISTAR
+   INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* Card contenedora */
+:host > div {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #041528;
+  border-radius: 18px;
+  padding: 16px 18px 20px;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Título */
+:host h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Iconito de carpeta al lado del título usando emoji */
+:host h2::before {
+  content: "📂";
+  font-size: 20px;
+}
+
+/* ================================
+   TABLA COMO LISTA DE CARPETAS
+   ================================ */
+
+:host ::ng-deep table.mat-mdc-table {
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  background: transparent;
+  border-collapse: collapse;
+}
+
+/* Cabecera */
+:host ::ng-deep .mat-mdc-header-row {
+  background-color: rgba(7, 21, 43, 0.9) !important;
+}
+
+:host ::ng-deep .mat-mdc-header-cell {
+  color: #dce8ff !important;
+  font-weight: 600;
+  font-size: 0.8rem;
+  border-bottom-color: rgba(124, 194, 255, 0.35);
+  text-align: left;
+  padding: 8px 10px;
+}
+
+/* Filas como “carpetas” */
+:host ::ng-deep .mat-mdc-row {
+  background: rgba(4, 21, 40, 0.9);
+  border-radius: 12px;
+  margin: 6px 0;
+  display: table-row;
+  transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+}
+
+:host ::ng-deep .mat-mdc-row:hover {
+  background: rgba(16, 85, 144, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(124, 194, 255, 0.5);
+}
+
+/* Celdas */
+:host ::ng-deep .mat-mdc-cell {
+  color: #f4fbff !important;
+  font-size: 0.8rem;
+  border-bottom-color: transparent;
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+
+/* ID pequeño */
+:host ::ng-deep .mat-mdc-header-cell:first-child,
+:host ::ng-deep .mat-mdc-cell:first-child {
+  width: 60px;
+}
+
+/* Nombre con estilo “carpeta” */
+:host ::ng-deep .mat-mdc-cell:nth-child(2) {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Icono carpeta en columna Nombre */
+:host ::ng-deep .mat-mdc-cell:nth-child(2)::before {
+  content: "📁";
+  font-size: 18px;
+}
+
+/* Descripción en tono más suave */
+:host ::ng-deep .mat-mdc-cell:nth-child(3) {
+  color: #c8d3e6 !important;
+}
+
+/* BOTONES EDIT / DELETE */
+:host ::ng-deep td button {
+  min-width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(124, 194, 255, 0.6);
+  background: rgba(4, 21, 40, 0.9);
+  transition: all 0.18s ease;
+}
+
+:host ::ng-deep td button mat-icon {
+  font-size: 18px;
+}
+
+/* Edit celeste */
+:host ::ng-deep td:nth-child(4) button mat-icon {
+  color: #7cc2ff;
+}
+
+/* Delete rojo */
+:host ::ng-deep td:nth-child(5) button mat-icon {
+  color: #ff6b6b;
+}
+
+/* Hover botones */
+:host ::ng-deep td button:hover {
+  background: #105590;
+  box-shadow: 0 0 10px rgba(124, 194, 255, 0.65);
+}
+
+/* ================================
+   BOTÓN "REGISTRAR LISTA"
+   ================================ */
+
+.actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Botón registrar */
+.actions button {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px;
+  padding: 6px 18px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(180, 221, 255, 0.5);
+  text-transform: none !important;
+}
+
+.actions button:hover {
+  background-color: #1470c1 !important;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 960px) {
+  :host {
+    padding: 12px;
+  }
+
+  :host > div {
+    padding: 14px 12px 16px;
+  }
+
+  :host ::ng-deep .mat-mdc-header-cell,
+  :host ::ng-deep .mat-mdc-cell {
+    padding: 6px 4px;
+    font-size: 0.78rem;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

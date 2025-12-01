@@ -1,0 +1,206 @@
+/* ================================
+   PAGOS INSERTAR - INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* Contenedor principal centrado */
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Título */
+.container h2 {
+  margin: 0 0 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Card principal */
+.container > div {
+  background: #041528;
+  border-radius: 16px;
+  padding: 24px 28px;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+}
+
+/* Formulario */
+.example-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ================================
+   MAT-FORM-FIELD DARK STYLE
+   ================================ */
+
+:host ::ng-deep .mat-mdc-form-field {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--filled,
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--outlined {
+  background-color: #0b2745 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(124, 194, 255, 0.24) !important;
+}
+
+:host ::ng-deep .mat-mdc-notched-outline .mdc-notched-outline__leading,
+:host ::ng-deep .mat-mdc-notched-outline .mdc-notched-outline__notch,
+:host ::ng-deep .mat-mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: rgba(124, 194, 255, 0.24) !important;
+}
+
+:host ::ng-deep .mat-mdc-text-field-wrapper:hover .mat-mdc-notched-outline .mdc-notched-outline__leading,
+:host ::ng-deep .mat-mdc-text-field-wrapper:hover .mat-mdc-notched-outline .mdc-notched-outline__notch,
+:host ::ng-deep .mat-mdc-text-field-wrapper:hover .mat-mdc-notched-outline .mdc-notched-outline__trailing {
+  border-color: rgba(180, 221, 255, 0.65) !important;
+}
+
+:host ::ng-deep .mdc-text-field--filled .mdc-line-ripple {
+  display: none !important;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin: 0 4px;
+  min-height: 16px;
+}
+
+/* Label e input */
+:host ::ng-deep .mat-mdc-form-field-label {
+  color: #8fa6c5 !important;
+  font-size: 0.84rem;
+}
+
+:host ::ng-deep .mat-mdc-input-element,
+:host ::ng-deep .mat-mdc-select-value-text {
+  color: #ffffff !important;
+  font-size: 0.9rem;
+}
+
+/* Hint */
+:host ::ng-deep .mat-mdc-form-field-hint {
+  color: #8fa6c5 !important;
+  font-size: 0.75rem;
+}
+
+/* Iconos en datepicker / selects */
+:host ::ng-deep .mat-mdc-form-field-icon-suffix mat-datepicker-toggle,
+:host ::ng-deep .mat-mdc-form-field-icon-suffix mat-icon {
+  color: #7cc2ff !important;
+}
+
+/* Errores */
+:host ::ng-deep .mat-mdc-form-field-error {
+  color: #ff8b8b !important;
+  font-size: 0.78rem;
+}
+
+/* Select options panel */
+:host ::ng-deep .mat-mdc-select-panel {
+  background-color: #07152b !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(124, 194, 255, 0.35) !important;
+}
+
+:host ::ng-deep .mat-mdc-option {
+  color: #e5f0ff !important;
+}
+
+:host ::ng-deep .mat-mdc-option.mdc-list-item--selected {
+  background-color: #105590 !important;
+}
+
+/* ================================
+   CLASES CUSTOM
+   ================================ */
+
+.example-full-width {
+  width: 100%;
+}
+
+br {
+  display: none;
+}
+
+/* ================================
+   BOTONES DEL FORMULARIO
+   ================================ */
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Botón primario */
+.actions button[mat-raised-button][color='primary'] {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 8px 22px !important;
+  font-weight: 600;
+  font-size: 0.86rem !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+  transition: all 0.18s ease;
+}
+
+.actions button[mat-raised-button][color='primary']:hover {
+  background-color: #1470c1 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* Botón cancelar */
+.actions button[mat-raised-button][color='warn'] {
+  background-color: #9a3a3a !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 8px 18px !important;
+  font-weight: 600;
+  font-size: 0.86rem !important;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.7);
+  transition: all 0.18s ease;
+}
+
+.actions button[mat-raised-button][color='warn']:hover {
+  background-color: #b84848 !important;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 960px) {
+  :host {
+    padding: 16px;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  .container > div {
+    padding: 18px 16px;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

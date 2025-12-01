@@ -1,0 +1,261 @@
+/* ============= FORMULARIO REGISTRO / LOGIN ============= */
+/* Fondo igual que login wrapper */
+.registro-wrapper {
+  width: 100%;
+  min-height: 100vh;              /* Cambiado de height a min-height */
+  overflow-x: hidden;             /* Elimina scroll horizontal */
+  background: radial-gradient(
+    circle at top left,
+    #102545 0%,
+    #050816 50%,
+    #02030a 100%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Card más ancha */
+.registro-card {
+  width: 95vw;
+  max-width: 600px;
+  background: #07152b;
+  padding: 30px 40px;
+  border-radius: 22px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+}
+
+/* Logo */
+.registro-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.registro-logo img {
+  width: 90px;
+  filter: drop-shadow(0 0 10px rgba(79, 139, 201, 0.6));
+}
+
+/* Header */
+.registro-header {
+  text-align: center;
+}
+
+.registro-header h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.registro-header p {
+  font-size: 0.9rem;
+  color: #c1d7f3;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+/* Etiquetas Blancas */
+label {
+  color: white !important;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+/* Filas 2 columnas */
+.form-row {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  margin-bottom: 12px;        /* Margen entre filas */
+  flex-wrap: nowrap;          /* Por defecto, dos columnas */
+}
+
+.col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs oscuros minimal */
+.dark-input {
+  width: 100%;
+  height: 42px;
+  background: #050c1a;
+  border: 1.6px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 0.92rem;
+  color: white;
+  transition: 0.3s ease;
+  box-sizing: border-box;
+}
+
+/* Hover inputs */
+.dark-input:hover {
+  border-color: #7cc2ff;
+  background: #071425;
+  box-shadow: 0 0 6px rgba(124, 194, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* Focus inputs */
+.dark-input:focus {
+  outline: none;
+  border-color: #4f8bc9;
+  box-shadow: 0 0 0 2px #4f8bc9, 0 0 15px rgba(79, 139, 201, 0.5);
+  background: #050f20;
+}
+
+/* Mensaje hint celeste */
+.input-hint {
+  font-size: 0.74rem;
+  color: #7cc2ff;
+  margin-top: 3px;
+  font-weight: 500;
+  opacity: 1 !important;
+  display: block;
+}
+
+/* Mensajes error rojos */
+.error {
+  font-size: 0.76rem;
+  color: #ff4a4a;
+  font-weight: 600;
+  margin-top: 3px;
+  opacity: 1 !important;
+  display: block;
+}
+
+/* Estilo para el grupo de botones */
+.button-group {
+  margin-top: 25px; /* separa botones del formulario */
+}
+
+/* Botón guardar */
+button.btn-guardar {
+  width: 100%;
+  background-color: #050c1a !important;
+  color: white !important;
+  border: 1.5px solid #4f8bc9 !important;
+  height: 46px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: 0.25s ease;
+  box-shadow: none !important;
+  text-transform: none;
+  box-sizing: border-box;
+}
+
+button.btn-guardar:hover:not(:disabled) {
+  background-color: #07152b !important;
+  border-color: #7cc2ff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(124, 194, 255, 0.3);
+}
+
+/* Botón deshabilitado */
+button.btn-guardar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Botón cancelar */
+button.btn-cancelar {
+  width: 100%;
+  background: transparent !important;
+  color: #ff6b6b !important;
+  border: 1.5px solid #ff6b6b !important;
+  height: 46px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: 0.25s ease;
+  box-shadow: none !important;
+  text-transform: none;
+  box-sizing: border-box;
+  margin-top: 10px; /* separa de guardar */
+}
+
+button.btn-cancelar:hover {
+  background: rgba(255, 107, 107, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+/* ================== RESPONSIVE ================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 850px) {
+  .registro-wrapper {
+    align-items: flex-start;   /* Evita que quede cortado en pantallas bajas */
+    padding: 16px;
+  }
+
+  .registro-card {
+    width: 100%;
+    max-width: 520px;
+    padding: 24px 22px;
+    margin-top: 10px;
+  }
+
+  .form-row {
+    flex-direction: column;    /* Cada input a una fila */
+    gap: 10px;
+  }
+
+  .registro-header h2 {
+    font-size: 1.55rem;
+  }
+
+  .registro-header p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Celulares pequeños */
+@media (max-width: 500px) {
+  .registro-wrapper {
+    padding: 12px;
+  }
+
+  .registro-card {
+    padding: 20px 16px;
+    width: 100%;
+    border-radius: 18px;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.7);
+  }
+
+  .registro-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .registro-header p {
+    font-size: 0.8rem;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+
+  .dark-input {
+    font-size: 0.85rem;
+    height: 40px;
+  }
+
+  button.btn-guardar,
+  button.btn-cancelar {
+    font-size: 0.86rem;
+    height: 44px;
+  }
+}

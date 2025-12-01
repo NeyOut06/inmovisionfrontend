@@ -1,0 +1,60 @@
+<!-- src/app/components/mensaje/mensajelistar/mensajelistar.html -->
+<div class="mensajes-wrapper">
+  <!-- HEADER -->
+  <section class="mensajes-header">
+    <div class="header-left">
+      <div class="header-icon">
+        <mat-icon>forum</mat-icon>
+      </div>
+      <div class="header-text">
+        <h1>Mensajes</h1>
+        <p>Selecciona una propiedad para enviar un mensaje</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID DE PROPIEDADES -->
+  <section class="cards-grid">
+    @if (propiedades.length === 0) {
+      <div class="empty-state">
+        <mat-icon>home_work</mat-icon>
+        <p>No hay propiedades disponibles</p>
+      </div>
+    }
+
+    @for (propiedad of propiedades; track propiedad.idPropiedad) {
+      <article
+        class="property-card"
+        (click)="abrirChat(propiedad.idPropiedad)"
+      >
+        <div class="card-image">
+          <img
+            [src]="obtenerImagen(propiedad)"
+            [alt]="propiedad.titulo || 'Propiedad'"
+          />
+          <div class="image-overlay">
+            <div class="overlay-icon">
+              <mat-icon>chat</mat-icon>
+            </div>
+            <span>Enviar mensaje</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h3 class="card-title">{{ propiedad.titulo }}</h3>
+
+          <div class="card-meta">
+            <div class="meta-item">
+              <mat-icon>location_on</mat-icon>
+              <span>{{ propiedad.distrito.nombreDistrito || 'Sin distrito' }}</span>
+            </div>
+            <div class="meta-item">
+              <mat-icon>attach_money</mat-icon>
+              <span>S/ {{ propiedad.precio | number: '1.2-2' }}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    }
+  </section>
+</div>

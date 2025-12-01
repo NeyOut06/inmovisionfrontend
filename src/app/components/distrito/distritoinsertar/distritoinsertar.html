@@ -1,0 +1,92 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h2>Registro de distritos</h2>
+  </div>
+
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      @if(edicion){
+      <mat-form-field>
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="codigo" />
+      </mat-form-field>
+      }
+      <!-- Nombre del distrito -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nombre del distrito</mat-label>
+        <input matInput formControlName="nombreDistrito" />
+        <mat-error>
+          @if (form.get('nombreDistrito')?.hasError('required')) {
+            Ingrese nombre del distrito!!
+          }
+          @if (form.get('nombreDistrito')?.hasError('minlength')) {
+            Mínimo 2 caracteres
+          }
+          @if (form.get('nombreDistrito')?.hasError('pattern')) {
+            Solo letras
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <!-- Provincia -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Provincia</mat-label>
+        <input matInput formControlName="provinciaDistrito" />
+        <mat-error>
+          @if (form.get('provinciaDistrito')?.hasError('required')) {
+            Ingrese provincia!!
+          }
+          @if (form.get('provinciaDistrito')?.hasError('minlength')) {
+            Mínimo 3 caracteres
+          }
+          @if (form.get('provinciaDistrito')?.hasError('pattern')) {
+            Solo letras
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <!-- Departamento -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Departamento</mat-label>
+        <mat-select formControlName="departamentoDistrito">
+          @for (d of departamentoDistrito; track d) {
+            <mat-option [value]="d.value">{{ d.viewValue }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>
+          @if (form.get('departamentoDistrito')?.hasError('required')) {
+            Ingrese departamento!!
+          }
+        </mat-error>
+      </mat-form-field>
+
+      <br />
+
+      <!-- Botones -->
+      <div class="button-group">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="!form.valid"
+        >
+          Guardar
+        </button>
+
+        <button
+          mat-stroked-button
+          color="warn"
+          type="button"
+          (click)="cancelar()"
+        >
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

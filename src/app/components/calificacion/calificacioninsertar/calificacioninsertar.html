@@ -1,0 +1,104 @@
+<div class="container">
+  <div style="text-align: center; margin: 5%">
+    <h2>{{ edicion ? 'Edición de calificación' : 'Registrar calificación' }}</h2>
+  </div>
+
+  <div style="text-align: center; margin: 5%">
+    <form [formGroup]="form" (submit)="aceptar()" class="example-form">
+
+      @if (edicion) {
+      <mat-form-field class="example-full-width">
+        <mat-label>ID:</mat-label>
+        <input matInput formControlName="codigo" readonly="true" />
+      </mat-form-field>
+      }
+      <br />
+
+      <mat-form-field>
+        <mat-label>Puntuación</mat-label>
+        <input matInput type="number" formControlName="puntuacion" />
+        <mat-error>
+          @if (form.get('puntuacion')?.hasError('required')) { Ingrese puntuación!! }
+          @if (form.get('puntuacion')?.hasError('min')) {
+            Debe ser mayor a 1
+          }
+          @if (form.get('puntuacion')?.hasError('max')) {
+            Debe ser menor a 5
+          }
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill" class="small">
+          <mat-label>Comentario</mat-label>
+          <textarea matInput rows="2" formControlName="comentario"></textarea>
+          <mat-error>
+            @if (form.get('comentario')?.hasError('required')) {
+              Ingrese comentario!!
+            }
+            @if (form.get('comentario')?.hasError('minlength')) {
+              Mínimo 5 caracteres
+            }
+            @if (form.get('comentario')?.hasError('maxlength')) {
+              Máximo 200 caracteres
+            }
+          </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field appearance="fill" class="small">
+          <mat-label>Fecha</mat-label>
+          <input 
+          matInput 
+          [matDatepicker]="picker" 
+          formControlName="fecha"
+          [min]="hoy"
+          [max]="hoy"
+        />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+          @if (form.get('fecha')?.hasError('required')) {
+            La fecha es obligatoria.
+          }
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuario">
+          @for (u of listaUsuarios; track u) {
+          <mat-option [value]="u.idUser">{{ u.nombre }} {{ u.apellido }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>
+          @if (form.get('usuario')?.hasError('required')) { Seleccione usuario!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Propiedad</mat-label>
+        <mat-select formControlName="propiedad">
+          @for (p of listaPropiedades; track p) {
+          <mat-option [value]="p.idPropiedad">{{ p.titulo }}</mat-option>
+          }
+        </mat-select>
+        <mat-error>
+          @if (form.get('propiedad')?.hasError('required')) { Seleccione propiedad!! }
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <div class="actions">
+        <button mat-raised-button color="primary" type="submit">
+          {{ edicion ? 'Actualizar' : 'Registrar' }}
+        </button>
+
+        <button mat-raised-button color="warn" type="button" (click)="cancelar()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

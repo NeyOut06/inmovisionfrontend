@@ -1,0 +1,123 @@
+/* recomendacion-insertar.css */
+
+.reco-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 64px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 12px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 0%, #050816 50%, #02030a 100%);
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.reco-card {
+  width: 100%;
+  max-width: 820px;
+  background: #07152b;
+  border-radius: 22px;
+  padding: 26px 30px 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+  color: #f5f7ff;
+  border: 1px solid rgba(114, 144, 255, 0.32);
+}
+
+/* HEADER */
+.reco-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.reco-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.reco-subtitle {
+  margin: 4px 0 0;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.reco-badge {
+  padding: 6px 12px;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  background: rgba(129, 140, 248, 0.16);
+  border: 1px solid rgba(129, 140, 248, 0.6);
+}
+
+/* FORM */
+.reco-form {
+  margin-top: 8px;
+}
+
+.reco-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.reco-field {
+  flex: 1;
+}
+
+/* Para controlar anchos específicos */
+.reco-field.full {
+  min-width: 100%;
+}
+
+.reco-field.medium {
+  min-width: 220px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* BOTONES */
+.reco-actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.reco-actions button[mat-stroked-button] {
+  border-radius: 999px;
+}
+
+.reco-actions button[mat-flat-button] {
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+/* Ajuste de textarea */
+textarea[matInput] {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .reco-card {
+    padding: 20px 16px 18px;
+  }
+
+  .reco-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reco-badge {
+    align-self: flex-start;
+  }
+}

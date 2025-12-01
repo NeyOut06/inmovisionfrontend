@@ -1,0 +1,286 @@
+/* ================================
+   ROL LISTAR - INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.roles-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.roles-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.roles-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* BOTÓN REGISTRAR */
+.btn-register {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 6px 16px !important;
+  font-size: 0.84rem !important;
+  font-weight: 600 !important;
+  border: 1px solid rgba(180, 221, 255, 0.55);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+}
+
+.btn-register mat-icon {
+  margin-right: 6px;
+  font-size: 18px;
+}
+
+.btn-register:hover {
+  background-color: #1470c1 !important;
+}
+
+/* GRID DE CARDS */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+/* CARD */
+.role-card {
+  background: #041528;
+  border-radius: 16px;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+  padding: 10px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+
+.role-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(124, 194, 255, 0.14), transparent 55%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+}
+
+.role-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.9);
+  border-color: rgba(124, 194, 255, 0.55);
+}
+
+.role-card:hover::before {
+  opacity: 1;
+}
+
+/* CHIP DEL ROL */
+.role-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  align-self: flex-start;
+  background: rgba(12, 42, 80, 0.9);
+  color: #dce8ff;
+  border: 1px solid rgba(124, 194, 255, 0.55);
+}
+
+.role-icon {
+  font-size: 18px;
+}
+
+/* Colores por tipo de rol */
+.role-chip.role-admin {
+  background: rgba(255, 100, 100, 0.12);
+  border-color: rgba(255, 140, 140, 0.8);
+  color: #ffd0d0;
+}
+
+.role-chip.role-admin .role-icon {
+  color: #ff8b8b;
+}
+
+.role-chip.role-owner {
+  background: rgba(124, 194, 255, 0.12);
+  border-color: rgba(124, 194, 255, 0.85);
+  color: #d7ecff;
+}
+
+.role-chip.role-owner .role-icon {
+  color: #7cc2ff;
+}
+
+.role-chip.role-client {
+  background: rgba(141, 220, 155, 0.12);
+  border-color: rgba(141, 220, 155, 0.8);
+  color: #e1ffe7;
+}
+
+.role-chip.role-client .role-icon {
+  color: #8dde9b;
+}
+
+/* fallback */
+.role-chip.role-default {
+  /* se combina con los anteriores, pero asegura un fondo base */
+}
+
+/* BODY */
+.role-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* INFO DE USUARIO */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 30% 20%, #7cc2ff, #105590);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+  flex-shrink: 0;
+}
+
+.user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.user-label {
+  margin: 0;
+  font-size: 0.74rem;
+  color: #9fb4d4;
+}
+
+/* META */
+.role-meta {
+  font-size: 0.75rem;
+  color: #8fa6c5;
+}
+
+/* ACCIONES */
+.role-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.role-actions button {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px !important;
+  border: 1px solid rgba(124, 194, 255, 0.6);
+  background: rgba(4, 21, 40, 0.95);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.75);
+  transition: all 0.18s ease;
+  padding: 0;
+}
+
+.btn-edit mat-icon {
+  color: #7cc2ff;
+  font-size: 18px;
+}
+
+.btn-delete mat-icon {
+  color: #ff6b6b;
+  font-size: 18px;
+}
+
+.role-actions button:hover {
+  background: #105590;
+  box-shadow: 0 0 12px rgba(124, 194, 255, 0.7);
+}
+
+/* EMPTY STATE */
+.empty-state {
+  margin-top: 40px;
+  padding: 40px 20px;
+  text-align: center;
+  background: #041528;
+  border-radius: 18px;
+  border: 1px solid rgba(124, 194, 255, 0.3);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+}
+
+.empty-state mat-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #7cc2ff;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.empty-state span {
+  font-size: 0.8rem;
+  color: #9fb4d4;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  :host {
+    padding: 12px;
+  }
+
+  .roles-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-register {
+    align-self: stretch;
+    justify-content: center;
+    display: inline-flex;
+  }
+}

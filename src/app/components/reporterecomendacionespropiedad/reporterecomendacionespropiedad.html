@@ -1,0 +1,54 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <div class="titulo-icono">
+      <mat-icon>thumb_up</mat-icon>
+    </div>
+    <div class="titulo-texto">
+      <h2>Recomendaciones por propiedad</h2>
+      <p>Cantidad de recomendaciones registradas por cada propiedad.</p>
+    </div>
+  </div>
+
+  @if (hasData) {
+    <div class="reporte-contenido">
+      <!-- CARD GRÁFICO -->
+      <div class="chart-card">
+        <div class="chart-container">
+          <canvas
+            baseChart
+            [data]="polarChartData"
+            [options]="polarChartOptions"
+            [type]="polarChartType">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- CARD TABLA -->
+      <div class="tabla-card">
+        <h3>Detalle</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>ID Propiedad</th>
+              <th class="col-num">Cantidad de recomendaciones</th>
+              <th>Última fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of detalle; track item.idPropiedad) {
+              <tr>
+                <td>{{ item.idPropiedad }}</td>
+                <td class="col-num">{{ item.cantidadRecomendaciones }}</td>
+                <td>{{ item.ultimaFecha }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="sin-datos">
+      <p>No hay datos disponibles para este reporte.</p>
+    </div>
+  }
+</div>

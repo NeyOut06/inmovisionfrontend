@@ -1,0 +1,387 @@
+/* ================================
+   LISTAR PROPIEDADES - INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* Contenedor principal */
+.list-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Título */
+.list-container h2 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Grid de cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Card propiedad */
+.property-card {
+  background: #041528;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 194, 255, 0.2);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.9);
+  border-color: rgba(180, 221, 255, 0.6);
+}
+
+/* Imagen principal */
+.image-box {
+  height: 210px;
+  overflow: hidden;
+}
+
+.image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Contenido */
+.content-box {
+  padding: 14px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.content-box h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.precio {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffc857;
+}
+
+/* Info básica */
+.info {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #c8d3e6;
+  line-height: 1.5;
+}
+
+/* Estado */
+.estado {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.estado.disponible {
+  background: rgba(56, 194, 137, 0.16);
+  color: #3ddc97;
+  border: 1px solid rgba(61, 220, 151, 0.7);
+}
+
+.estado.no-disponible {
+  background: rgba(255, 107, 107, 0.16);
+  color: #ff8b8b;
+  border: 1px solid rgba(255, 107, 107, 0.7);
+}
+
+/* Botones */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+/* Botón VER DETALLES (principal) */
+.btn-detalle {
+  background-color: #0b2745 !important;
+  color: #e5f0ff !important;
+  border-radius: 999px !important;
+  padding: 4px 16px !important;
+  font-size: 0.78rem !important;
+  text-transform: none !important;
+  border: 1px solid rgba(124, 194, 255, 0.35) !important;
+}
+
+.btn-detalle:hover {
+  background-color: #105590 !important;
+}
+
+/* Botón editar */
+.btn-edit {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 4px 14px !important;
+  font-size: 0.78rem !important;
+  text-transform: none !important;
+}
+
+/* Botón eliminar */
+.btn-delete {
+  border-radius: 999px !important;
+  padding: 4px 14px !important;
+  font-size: 0.78rem !important;
+  text-transform: none !important;
+}
+
+/* Botón ubicación */
+.btn-ubicacion {
+  border-radius: 999px !important;
+  padding: 4px 14px !important;
+  font-size: 0.78rem !important;
+  text-transform: none !important;
+}
+
+.actions button mat-icon {
+  margin-right: 4px;
+  font-size: 18px;
+}
+
+/* Registrar propiedad */
+.register-box {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-register {
+  background: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 8px 24px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+}
+
+/* ================================
+   MODAL DETALLE PROPIEDAD
+   ================================ */
+
+.detalle-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(3, 13, 30, 0.94), rgba(0, 0, 0, 0.96));
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1200;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.detalle-card {
+  width: 100%;
+  max-width: 980px;
+  max-height: 90vh;
+  background: #041528;
+  border-radius: 22px;
+  border: 1px solid rgba(124, 194, 255, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Header */
+.detalle-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 14px 18px 10px;
+  border-bottom: 1px solid rgba(124, 194, 255, 0.3);
+  background: linear-gradient(90deg, #041528 0%, #062143 60%, #041528 100%);
+}
+
+.detalle-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.detalle-thumb {
+  width: 88px;
+  height: 70px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 194, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.detalle-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalle-title-block h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.detalle-sub {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #c8d3e6;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.detalle-sub mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  color: #7cc2ff;
+}
+
+.detalle-tagline {
+  margin: 2px 0 0;
+  font-size: 12px;
+  color: #8fa6c5;
+}
+
+.detalle-precio {
+  color: #ffc857;
+  font-weight: 600;
+}
+
+/* Botón cerrar */
+.btn-detalle-close mat-icon {
+  color: #e5f0ff;
+}
+
+/* Body */
+.detalle-body {
+  padding: 14px 18px 16px;
+  overflow-y: auto;
+  max-height: calc(90vh - 90px);
+}
+
+/* Columnas de detalle */
+.detalle-columns {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px 18px;
+}
+
+.detalle-col h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b4ddff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detalle-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6px;
+}
+
+.detalle-item .label {
+  font-size: 11px;
+  color: #8fa6c5;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.detalle-item .value {
+  font-size: 13px;
+  color: #e5f0ff;
+}
+
+/* Notas */
+.detalle-notas {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(124, 194, 255, 0.3);
+}
+
+.detalle-notas h4 {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b4ddff;
+}
+
+.detalle-notas p {
+  margin: 0;
+  font-size: 13px;
+  color: #e5f0ff;
+}
+
+/* Scrollbar modal */
+.detalle-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.detalle-body::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  :host {
+    padding: 16px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .register-box {
+    justify-content: center;
+  }
+
+  .detalle-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .detalle-card {
+    max-height: 100vh;
+  }
+}

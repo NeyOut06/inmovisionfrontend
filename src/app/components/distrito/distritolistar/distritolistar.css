@@ -1,0 +1,125 @@
+/* ====== CONTENEDOR GENERAL ====== */
+div {
+  padding: 30px;
+  margin: 0 auto;
+  max-width: 1100px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* ====== TÍTULO ====== */
+h2 {
+  font-weight: 600;
+  color: #212121;
+  text-align: center;
+  margin-bottom: 25px;
+  letter-spacing: 0.5px;
+}
+
+/* ====== TABLA ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Cabecera */
+th {
+  font-weight: 600;
+  background-color: #ffffff; /* Rojo institucional Inmovision */
+  color: #251818;
+  text-align: center;
+  padding: 14px 10px;
+  letter-spacing: 0.3px;
+  font-size: 15px;
+}
+
+/* Filas */
+td {
+  text-align: center;
+  padding: 12px 10px;
+  color: #424242;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* Filas alternadas */
+tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover fila */
+tr:hover,
+.mat-mdc-row:hover,
+.mat-row:hover {
+  background-color: #D6E4FF !important;
+  transition: background-color 0.25s ease-in-out;
+}
+
+/* Quitar sombra extra del mat-table */
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+/* ====== BOTÓN ====== */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+/* Botón "Registrar Distrito" */
+button[mat-menu-item],
+button[mat-flat-button] {
+  background-color: #25415e; /* Rojo Inmovision */
+  color: white;
+  font-weight: 500;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  transition: all 0.25s ease;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover del botón */
+button[mat-menu-item]:hover,
+button[mat-flat-button]:hover {
+  background-color: #25415e;
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  table {
+    font-size: 13px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+
+  button[mat-menu-item],
+  button[mat-flat-button] {
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+  }
+}
+
+/* ====== SCROLL HORIZONTAL (si hay muchas columnas) ====== */
+@media (max-width: 600px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

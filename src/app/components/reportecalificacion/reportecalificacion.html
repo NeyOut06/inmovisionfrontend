@@ -1,0 +1,22 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <mat-icon>bar_chart</mat-icon>
+    <h2>Reporte de calificaciones por propiedad</h2>
+  </div>
+
+  @if (hasData) {
+    <div class="chart-card">
+      <canvas
+        baseChart
+        [data]="{ labels: barChartLabels, datasets: barChartData }"
+        [options]="barChartOptions"
+        [type]="barChartType"
+      ></canvas>
+    </div>
+  } @else {
+    <div class="no-data">
+      <mat-icon>info</mat-icon>
+      <p>No hay calificaciones registradas para generar el reporte.</p>
+    </div>
+  }
+</div>

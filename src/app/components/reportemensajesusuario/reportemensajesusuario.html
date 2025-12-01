@@ -1,0 +1,81 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <mat-icon>mail</mat-icon>
+    <h2>Mensajes por usuario</h2>
+  </div>
+
+  <!-- Filtros de fecha -->
+  <div class="filtros-container">
+    <mat-form-field appearance="outline" class="filtro-field">
+      <mat-label>Fecha inicio</mat-label>
+      <input
+        matInput
+        [matDatepicker]="pickerInicio"
+        [(ngModel)]="inicioFiltro"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerInicio"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="filtro-field">
+      <mat-label>Fecha fin</mat-label>
+      <input matInput [matDatepicker]="pickerFin" [(ngModel)]="finFiltro" />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="pickerFin"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-primario" (click)="cargarDatos()">
+      Aplicar
+    </button>
+    <button mat-stroked-button class="btn-secundario" (click)="limpiarFiltros()">
+      Limpiar
+    </button>
+  </div>
+
+  <div *ngIf="hasData; else noData" class="reporte-contenido">
+    <div class="chart-card">
+      <canvas
+        baseChart
+        [data]="barChartData"
+        [type]="barChartType"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+      >
+      </canvas>
+    </div>
+
+    <div class="tabla-card">
+      <h3>Detalle</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Usuario</th>
+            <th>Usuario</th>
+            <th>Cantidad de mensajes</th>
+            <th>Última fecha</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of detalle">
+            <td>{{ item.idUser }}</td>
+            <td>{{ item.nombre }} {{ item.apellido }}</td>
+            <td>{{ item.cantidadMensajes }}</td>
+            <td>{{ item.ultimaFecha | date: 'dd/MM/yyyy' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #noData>
+    <div class="sin-datos">
+      <p>No hay datos para el rango seleccionado.</p>
+    </div>
+  </ng-template>
+</div>

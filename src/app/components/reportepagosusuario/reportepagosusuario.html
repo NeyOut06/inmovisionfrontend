@@ -1,0 +1,88 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <div class="titulo-icono">
+      <mat-icon>payments</mat-icon>
+    </div>
+    <div class="titulo-texto">
+      <h2>Reporte de pagos por usuario</h2>
+      <p>Cantidad de pagos y montos totales por usuario en el rango seleccionado.</p>
+    </div>
+  </div>
+
+  <div class="filtros-container">
+    <div class="filtro-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha inicio</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerInicio"
+          [(ngModel)]="inicioFiltro" />
+        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="filtro-field">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha fin</mat-label>
+        <input
+          matInput
+          [matDatepicker]="pickerFin"
+          [(ngModel)]="finFiltro" />
+        <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFin></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="filtros-acciones">
+      <button mat-raised-button class="btn-primario" (click)="cargarDatos()">
+        Aplicar filtros
+      </button>
+      <button mat-stroked-button class="btn-secundario" (click)="limpiarFiltros()">
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  @if (hasData) {
+    <div class="reporte-contenido">
+      <div class="chart-card">
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="barChartType"
+          [legend]="barChartLegend">
+        </canvas>
+      </div>
+
+      <div class="tabla-card">
+        <h3>Detalle</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Usuario</th>
+              <th class="col-num">Cantidad de pagos</th>
+              <th class="col-num">Monto total</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of detalle; track item.idUser) {
+              <tr>
+                <td>{{ item.nombre }} {{ item.apellido }}</td>
+                <td class="col-num">{{ item.cantidadpagos }}</td>
+                <td class="col-num">
+                  {{ item.montototal | currency:'PEN':'symbol':'1.2-2' }}
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="sin-datos">
+      <p>No hay datos suficientes para generar el reporte.</p>
+    </div>
+  }
+</div>

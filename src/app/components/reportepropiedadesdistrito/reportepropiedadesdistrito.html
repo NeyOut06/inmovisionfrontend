@@ -1,0 +1,48 @@
+<div class="reporte-wrapper">
+  <div class="reporte-header">
+    <div class="titulo-icono">
+      <mat-icon>location_city</mat-icon>
+    </div>
+    <div class="titulo-texto">
+      <h2>Propiedades por distrito</h2>
+      <p>Cantidad total de propiedades registradas por distrito.</p>
+    </div>
+  </div>
+
+  @if (hasData) {
+    <div class="reporte-contenido">
+      <div class="chart-card">
+        <canvas
+          baseChart
+          [data]="barChartData"
+          [options]="barChartOptions"
+          [type]="barChartType">
+        </canvas>
+      </div>
+
+      <div class="tabla-card">
+        <h3>Detalle</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Distrito</th>
+              <th class="col-num">Cantidad de propiedades</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of detalle; track item.distrito) {
+              <tr>
+                <td>{{ item.distrito }}</td>
+                <td class="col-num">{{ item.cantidadPropiedades }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  } @else {
+    <div class="sin-datos">
+      <p>No hay datos disponibles para este reporte.</p>
+    </div>
+  }
+</div>

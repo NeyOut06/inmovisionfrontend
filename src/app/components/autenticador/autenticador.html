@@ -1,0 +1,69 @@
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div class="login-wrapper">
+  <!-- PANEL IZQUIERDO: IMAGEN / TEXTO -->
+  <div class="welcome-panel">
+  <div class="visual-card">
+    <div class="visual-content"></div>
+
+    <div class="logo-circle">A.</div>
+
+    <div class="welcome-text">
+      Sé parte de Algo
+      <span class="bold-text">Hermoso</span>
+    </div>
+  </div>
+</div>
+
+  <!-- PANEL DERECHO: LOGIN -->
+  <div class="login-panel">
+    <div class="logo-container">
+      <img
+        src="assets/inmovisionlogo.png"
+        alt="Inmovision Logo"
+        class="inmovision-logo"
+      />
+    </div>
+
+    <h2>Inicie sesión</h2>
+    <p class="subtitle">Ingrese sus credenciales para acceder a su cuenta.</p>
+
+    <!-- Usuario -->
+    <mat-form-field
+      appearance="fill"
+      floatLabel="always"
+      class="full-width-input"
+    >
+      <mat-label>Usuario</mat-label>
+      <input
+        matInput
+        [(ngModel)]="username"
+        name="username"
+      />
+    </mat-form-field>
+
+    <!-- Contraseña -->
+    <mat-form-field
+      appearance="fill"
+      floatLabel="always"
+      class="full-width-input"
+    >
+      <mat-label>Contraseña</mat-label>
+      <input
+        matInput
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+      />
+    </mat-form-field>
+
+    <button mat-raised-button class="btn-login" (click)="login()">
+      Ingresar
+    </button>
+
+    <div class="register-link">
+      ¿No eres miembro?
+      <a href="javascript:void(0)" (click)="goToRegister()">Regístrate aquí</a>
+    </div>
+  </div>
+</div>

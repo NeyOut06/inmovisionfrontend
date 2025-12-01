@@ -1,0 +1,256 @@
+/* ========================================
+   ROL INSERTAR - INMOVISION UI
+   ======================================== */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* Centrar el card en la página */
+.role-page {
+  min-height: calc(100vh - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card principal */
+.role-card {
+  width: min(640px, 100%);
+  background: #041528;
+  border-radius: 22px;
+  padding: 24px 26px 22px;
+  border: 1px solid rgba(124, 194, 255, 0.26);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.8);
+}
+
+/* Título */
+.role-title {
+  margin: 0 0 18px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Formulario */
+.role-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  width: 100%;
+}
+
+/* ================================
+   MAT-FORM-FIELD DARK STYLE
+   ================================ */
+
+:host ::ng-deep .mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Wrapper del input/select */
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--filled {
+  background-color: #0b2745 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(124, 194, 255, 0.45) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6);
+  padding-inline: 10px !important;
+  height: 44px !important;
+}
+
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--filled:hover {
+  border-color: rgba(180, 221, 255, 0.9) !important;
+}
+
+/* infix interno */
+:host ::ng-deep .mat-mdc-form-field-infix {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 32px !important;
+}
+
+/* sin línea inferior */
+:host ::ng-deep .mdc-text-field--filled .mdc-line-ripple {
+  display: none !important;
+}
+
+/* Label e input */
+:host ::ng-deep .mat-mdc-form-field-label {
+  color: #c8d3e6 !important;
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+:host ::ng-deep .mat-mdc-input-element,
+:host ::ng-deep .mat-mdc-select-value-text {
+  color: #f4fbff !important;
+  font-size: 0.88rem;
+}
+
+:host ::ng-deep .mat-mdc-input-element::placeholder {
+  color: #9fb4d4 !important;
+}
+
+/* Flechita del select */
+:host ::ng-deep .mat-mdc-select-arrow {
+  color: #7cc2ff !important;
+}
+
+/* Errores */
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin: 0 4px;
+  min-height: 16px;
+}
+
+:host ::ng-deep .mat-mdc-form-field-error {
+  color: #ff8b8b !important;
+  font-size: 0.75rem;
+}
+
+/* ================================
+   PANEL MAT-SELECT - PALETA INMOVISION
+   ================================ */
+
+:host ::ng-deep .inmovision-select-panel {
+  background-color: #07152b !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(124, 194, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
+  margin-top: 8px !important;
+  padding: 8px 0 !important;
+  min-width: 260px !important;
+  max-width: 360px !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Opciones del select */
+:host ::ng-deep .inmovision-select-panel .mat-mdc-option {
+  background-color: transparent !important;
+  color: #e5f0ff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+  margin: 2px 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Texto interno */
+:host ::ng-deep
+  .inmovision-select-panel
+  .mat-mdc-option
+  .mdc-list-item__primary-text {
+  color: #e5f0ff !important;
+}
+
+/* Hover */
+:host ::ng-deep .inmovision-select-panel .mat-mdc-option:hover {
+  background-color: #050c1a !important;
+  box-shadow: 0 0 8px rgba(79, 139, 201, 0.4) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Seleccionado */
+:host ::ng-deep
+  .inmovision-select-panel
+  .mat-mdc-option.mdc-list-item--selected {
+  background-color: #105590 !important;
+}
+
+:host ::ng-deep
+  .inmovision-select-panel
+  .mat-mdc-option.mdc-list-item--selected
+  .mdc-list-item__primary-text {
+  color: #ffffff !important;
+}
+
+/* Scrollbar del panel */
+:host ::ng-deep .inmovision-select-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+:host ::ng-deep .inmovision-select-panel::-webkit-scrollbar-track {
+  background: #02030a;
+}
+
+:host ::ng-deep .inmovision-select-panel::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(79, 139, 201, 0.7);
+}
+
+:host ::ng-deep .inmovision-select-panel::-webkit-scrollbar-thumb:hover {
+  background: #7cc2ff;
+}
+
+/* Firefox */
+:host ::ng-deep .inmovision-select-panel {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8bc9 #02030a;
+}
+
+/* ================================
+   BOTONES
+   ================================ */
+
+.actions {
+  margin-top: 14px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Botón primario */
+.actions button[color='primary'] {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 6px 22px !important;
+  font-weight: 600;
+  font-size: 0.86rem !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.8);
+}
+
+/* Botón cancelar */
+.actions button[color='warn'] {
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-size: 0.86rem !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 720px) {
+  :host {
+    padding: 12px;
+  }
+
+  .role-card {
+    padding: 18px 16px 16px;
+    border-radius: 18px;
+  }
+
+  .role-title {
+    font-size: 18px;
+  }
+
+  .actions {
+    justify-content: center;
+  }
+}

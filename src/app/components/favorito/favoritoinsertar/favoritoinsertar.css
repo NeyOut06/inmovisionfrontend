@@ -1,0 +1,259 @@
+/* ================================
+   FAVORITO INSERTAR - INMOVISION UI
+   ================================ */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 16px 20px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #e5f0ff;
+}
+
+/* Card centrada */
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  background: #041528;
+  border-radius: 18px;
+  padding: 18px 22px 22px;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+  box-sizing: border-box;
+}
+
+/* Título */
+.container h2 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Formulario */
+.example-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ================================
+   MAT-FORM-FIELD DARK STYLE
+   ================================ */
+
+:host ::ng-deep .mat-mdc-form-field {
+  width: 100%;
+}
+
+/* Wrapper de input/select */
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--filled {
+  background-color: #0b2745 !important;
+  border-radius: 10px !important;
+  border: 1px solid rgba(124, 194, 255, 0.45) !important;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+  padding-inline: 10px !important;
+  height: 42px !important;
+}
+
+:host ::ng-deep .mat-mdc-text-field-wrapper.mdc-text-field--filled:hover {
+  border-color: rgba(180, 221, 255, 0.9) !important;
+}
+
+/* área interna compacta */
+:host ::ng-deep .mat-mdc-form-field-infix {
+  padding-top: 2px !important;
+  padding-bottom: 2px !important;
+  min-height: 32px !important;
+}
+
+/* Textareas (por si acaso) */
+:host ::ng-deep textarea.mat-mdc-input-element {
+  min-height: 70px !important;
+  max-height: 100px !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Sin línea inferior */
+:host ::ng-deep .mdc-text-field--filled .mdc-line-ripple {
+  display: none !important;
+}
+
+/* Label e input (más contraste) */
+:host ::ng-deep .mat-mdc-form-field-label {
+  color: #c8d3e6 !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+:host ::ng-deep .mat-mdc-input-element,
+:host ::ng-deep .mat-mdc-select-value-text {
+  color: #f4fbff !important;
+  font-size: 0.86rem;
+}
+
+/* Placeholder visible */
+:host ::ng-deep .mat-mdc-input-element::placeholder {
+  color: #9fb4d4 !important;
+}
+
+/* Iconos (datepicker / select arrow) */
+:host ::ng-deep .mat-mdc-form-field-icon-suffix mat-datepicker-toggle,
+:host ::ng-deep .mat-mdc-form-field-icon-suffix mat-icon,
+:host ::ng-deep .mat-mdc-select-arrow {
+  color: #7cc2ff !important;
+}
+
+/* Hint y errores */
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin: 0 4px;
+  min-height: 16px;
+}
+
+:host ::ng-deep .mat-mdc-hint {
+  color: #9fb4d4 !important;
+  font-size: 0.74rem;
+}
+
+:host ::ng-deep .mat-mdc-form-field-error {
+  color: #ff8b8b !important;
+  font-size: 0.72rem;
+}
+
+/* ================================
+   PANEL DE SELECTS - PALETA INMOVISION
+   ================================ */
+
+/* Panel del menú desplegable del mat-select */
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel {
+  background-color: #07152b !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(124, 194, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
+  margin-top: 8px !important;
+  padding: 8px 0 !important;
+  min-width: 240px !important;
+  max-width: 340px !important;
+  max-height: 360px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+/* Items del select */
+::ng-deep .cdk-overlay-pane .mat-mdc-option {
+  background-color: transparent !important;
+  color: #e5f0ff !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 0.88rem !important;
+  font-weight: 500 !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+  margin: 2px 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Texto interno opción */
+::ng-deep .cdk-overlay-pane .mat-mdc-option .mdc-list-item__primary-text {
+  color: #e5f0ff !important;
+}
+
+/* Hover */
+::ng-deep .cdk-overlay-pane .mat-mdc-option:hover {
+  background-color: #050c1a !important;
+  box-shadow: 0 0 8px rgba(79, 139, 201, 0.4) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Seleccionada */
+::ng-deep .cdk-overlay-pane .mat-mdc-option.mdc-list-item--selected {
+  background-color: #105590 !important;
+}
+
+::ng-deep .cdk-overlay-pane
+  .mat-mdc-option.mdc-list-item--selected
+  .mdc-list-item__primary-text {
+  color: #ffffff !important;
+}
+
+/* Scrollbar */
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel::-webkit-scrollbar-track {
+  background: #02030a;
+}
+
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(79, 139, 201, 0.7);
+}
+
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel::-webkit-scrollbar-thumb:hover {
+  background: #7cc2ff;
+}
+
+/* Firefox */
+::ng-deep .cdk-overlay-pane .mat-mdc-select-panel {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8bc9 #02030a;
+}
+
+/* ================================
+   BOTÓN REGISTRAR / EDITAR
+   ================================ */
+
+button[matButton] {
+  background-color: #105590 !important;
+  color: #ffffff !important;
+  border-radius: 999px !important;
+  padding: 6px 22px !important;
+  font-size: 0.86rem !important;
+  font-weight: 600;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(180, 221, 255, 0.6);
+}
+
+button[matButton]:hover {
+  background-color: #1470c1 !important;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 720px) {
+  :host {
+    padding: 12px;
+  }
+
+  .container {
+    padding: 14px 14px 18px;
+  }
+}
+
+.btn-cancelar {
+  border-radius: 999px !important;
+  padding: 6px 18px !important;
+  font-size: 0.85rem !important;
+  font-weight: 600;
+  color: #ff6b6b !important;
+  border: 1px solid rgba(255, 107, 107, 0.6) !important;
+  background: rgba(4, 21, 40, 0.9) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
+  transition: all 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background: #7a1b1b !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 12px rgba(255, 107, 107, 0.6);
+}
+

@@ -1,0 +1,96 @@
+<div class="roles-container">
+  <!-- HEADER -->
+  <div class="roles-header">
+    <h2>Lista de Roles</h2>
+
+    <button mat-raised-button class="btn-register" routerLink="/roles/nuevo">
+      <mat-icon>add</mat-icon>
+      Registrar Rol
+    </button>
+  </div>
+
+  <!-- GRID DE CARDS -->
+  <div class="cards-grid" *ngIf="dataSource.data.length; else emptyState">
+    <div class="role-card" *ngFor="let element of dataSource.data">
+      <!-- CHIP DEL ROL -->
+      <div
+        class="role-chip"
+        [ngClass]="{
+          'role-admin':
+            element.nombre.toLowerCase() === 'admin' ||
+            element.nombre.toLowerCase() === 'administrador',
+          'role-owner':
+            element.nombre.toLowerCase().includes('propiet'),
+          'role-client':
+            element.nombre.toLowerCase().includes('client'),
+          'role-default': true
+        }"
+      >
+        <mat-icon class="role-icon" [ngSwitch]="element.nombre.toLowerCase()">
+          <ng-container *ngSwitchCase="'admin'">security</ng-container>
+          <ng-container *ngSwitchCase="'administrador'">security</ng-container>
+          <ng-container *ngSwitchCase="'propietario'">home_work</ng-container>
+          <ng-container *ngSwitchCase="'cliente'">person</ng-container>
+          <ng-container *ngSwitchDefault>badge</ng-container>
+        </mat-icon>
+        <span class="role-name">{{ element.nombre }}</span>
+      </div>
+
+      <!-- INFO DE USUARIO -->
+      <div class="role-body">
+        <div class="user-info">
+          <div class="avatar">
+            <span>
+              {{
+                (element.usuario.nombre || element.usuario.apellido || 'U')
+                  .charAt(0)
+                  .toUpperCase()
+              }}
+            </span>
+          </div>
+
+          <div class="user-text">
+            <p class="user-name">
+              {{ element.usuario.nombre }} {{ element.usuario.apellido }}
+            </p>
+            <p class="user-label">
+              Usuario asociado
+            </p>
+          </div>
+        </div>
+
+        <div class="role-meta">
+          <span class="role-id">ID: {{ element.idRol }}</span>
+        </div>
+      </div>
+
+      <!-- ACCIONES -->
+      <div class="role-actions">
+        <button
+          mat-icon-button
+          class="btn-edit"
+          [routerLink]="['edits', element.idRol]"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="btn-delete"
+          (click)="eliminar(element.idRol)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIN ROLES -->
+  <ng-template #emptyState>
+    <div class="empty-state">
+      <mat-icon>group_off</mat-icon>
+      <p>No hay roles registrados todavía.</p>
+      <span>Empieza creando un nuevo rol para tus usuarios.</span>
+    </div>
+  </ng-template>
+</div>

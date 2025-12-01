@@ -1,0 +1,250 @@
+@if (verificar()) {
+<mat-sidenav-container class="sidenav-container">
+  <!-- SIDEBAR -->
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="custom-sidenav"
+    [class.collapsed]="collapsed"
+    [style.width.px]="collapsed ? 90 : 300"
+  >
+    <!-- LOGO + USUARIO/ROL -->
+    <div class="logo-area">
+      <button mat-icon-button (click)="collapsed = !collapsed" class="logo-btn">
+        <img src="assets/inmovisionlogo.png" alt="Logo Inmovision" class="logo-img" />
+      </button>
+
+      <div class="logo-text" *ngIf="!collapsed">
+        <span class="logo-title">Inmovision</span>
+        <div class="user-info-top">{{ usuario }} | Rol: {{ role }}</div>
+      </div>
+    </div>
+
+    <!-- MENU PRINCIPAL -->
+    <div class="menu-section">
+      <!-- TODOS LOS ROLES: HOME -->
+      <a mat-button routerLink="/homes" routerLinkActive="active-link" class="menu-item">
+        <mat-icon>home</mat-icon>
+        <span *ngIf="!collapsed">Inicio</span>
+      </a>
+
+      <!-- SOLO ADMIN -->
+      <a
+        mat-button
+        routerLink="/usuarios"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>group</mat-icon>
+        <span *ngIf="!collapsed">Usuarios</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/roles"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>verified_user</mat-icon>
+        <span *ngIf="!collapsed">Roles</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/propiedades"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>home_work</mat-icon>
+        <span *ngIf="!collapsed">Propiedades</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/mensajes"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>mail</mat-icon>
+        <span *ngIf="!collapsed">Mensajes</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/visitas"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>event</mat-icon>
+        <span *ngIf="!collapsed">Visitas</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/calificaciones"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>star_rate</mat-icon>
+        <span *ngIf="!collapsed">Calificaciones</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/contratos"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>description</mat-icon>
+        <span *ngIf="!collapsed">Contratos</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/favoritos"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>favorite</mat-icon>
+        <span *ngIf="!collapsed">Favoritos</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/listas-favoritos"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>list</mat-icon>
+        <span *ngIf="!collapsed">Lista favoritos</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/recomendaciones"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>thumb_up</mat-icon>
+        <span *ngIf="!collapsed">Recomendaciones</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/comparaciones"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>compare</mat-icon>
+        <span *ngIf="!collapsed">Comparaciones</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/pagos"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>payments</mat-icon>
+        <span *ngIf="!collapsed">Pagos</span>
+      </a>
+
+      <a
+        mat-button
+        routerLink="/simulacion-de-precios"
+        routerLinkActive="active-link"
+        class="menu-item"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>calculate</mat-icon>
+        <span *ngIf="!collapsed">Simulación de Precios</span>
+      </a>
+
+      <!-- BOTÓN REPORTES - SOLO ADMIN -->
+      <button
+        mat-button
+        [matMenuTriggerFor]="menuReportes"
+        class="menu-item"
+        type="button"
+        *ngIf="isAdmin()"
+      >
+        <mat-icon>analytics</mat-icon>
+        <span *ngIf="!collapsed">Reportes</span>
+      </button>
+    </div>
+
+    <div class="spacer"></div>
+
+    <!-- CERRAR SESION ABAJO (para todos los que pasen verificar()) -->
+    <div class="menu-section bottom-section">
+      <button mat-button (click)="cerrar()" class="menu-item logout-button">
+        <mat-icon>logout</mat-icon>
+        <span *ngIf="!collapsed">Cerrar sesión</span>
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <mat-sidenav-content class="main-content">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+}
+
+
+<!-- MENU REPORTES (el trigger solo aparece si es Admin) -->
+<mat-menu #menuReportes="matMenu" class="reportes-menu-panel">
+  <button mat-menu-item routerLink="/reportecalificaciones">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Rep. calificaciones</span>
+  </button>
+  <button mat-menu-item routerLink="/reportetopdistritos">
+    <mat-icon>bar_chart</mat-icon>
+    <span>Top distritos Contrato</span>
+  </button>
+  <button mat-menu-item routerLink="/reportemontopromediotipo">
+    <mat-icon>pie_chart</mat-icon>
+    <span>Monto promedio por tipo Contrato</span>
+  </button>
+  <button mat-menu-item routerLink="/reporte-favoritos-propiedad">
+    <mat-icon>favorite</mat-icon>
+    <span>Rep. Favoritos por propiedad</span>
+  </button>
+  <button mat-menu-item routerLink="/reportemensajesusuario">
+    <mat-icon>mail</mat-icon>
+    <span>Mensajes por usuario</span>
+  </button>
+  <button mat-menu-item routerLink="/reportepagosusuario">
+    <mat-icon>payments</mat-icon>
+    <span>Pagos por usuario</span>
+  </button>
+  <button mat-menu-item routerLink="/reportepagosmetodo">
+    <mat-icon>pie_chart</mat-icon>
+    <span>Pagos por método</span>
+  </button>
+  <button mat-menu-item routerLink="/reportepropiedadesdistrito">
+    <mat-icon>location_city</mat-icon>
+    <span>Propiedades por distrito</span>
+  </button>
+  <button mat-menu-item routerLink="/reporterecomendacionespropiedad">
+    <mat-icon>thumb_up</mat-icon>
+    <span>Recomendaciones por propiedad</span>
+  </button>
+  <button mat-menu-item routerLink="/reportevistaspropiedad">
+    <mat-icon>event</mat-icon>
+    <span>Visitas por propiedad</span>
+  </button>
+</mat-menu>

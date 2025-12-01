@@ -1,0 +1,367 @@
+/* src/app/components/mensaje/mensajeinsertar/mensajeinsertar.css */
+
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  background: radial-gradient(circle at top left, #102545 5%, #050816 50%, #02030a 100%);
+  font-family: 'Poppins', sans-serif;
+}
+
+.chat-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* HEADER */
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #041528;
+  border-radius: 20px;
+  padding: 14px 18px;
+  border: 1px solid rgba(124, 194, 255, 0.3);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
+}
+
+.btn-back mat-icon {
+  color: #ffffff;
+}
+
+.header-main {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+
+.property-thumb {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.property-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.property-info h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.property-info p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #c8d3e6;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.property-info mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.header-chip {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(124, 194, 255, 0.16);
+  color: #7cc2ff;
+  font-size: 12px;
+}
+
+/* PANEL MENSAJES */
+
+.messages-panel {
+  flex: 1;
+  background: #041528;
+  border-radius: 20px;
+  padding: 20px 22px;
+  border: 1px solid rgba(124, 194, 255, 0.18);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  max-height: calc(100vh - 260px);
+  overflow-y: auto;
+}
+
+.messages-panel::-webkit-scrollbar {
+  width: 6px;
+}
+.messages-panel::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+}
+
+/* EMPTY */
+
+.empty-messages {
+  text-align: center;
+  color: #c8d3e6;
+  padding: 60px 10px;
+}
+
+.empty-messages mat-icon {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: #7cc2ff;
+}
+
+.empty-messages p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.empty-messages span {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* MENSAJES */
+
+.message-row {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.message-row.my-message {
+  justify-content: flex-end;
+}
+
+.message-bubble {
+  position: relative;
+  max-width: 60%;
+  background: #0b2745;
+  border-radius: 16px;
+  padding: 10px 12px 8px;
+  color: #ffffff;
+  border: 1px solid rgba(124, 194, 255, 0.25);
+}
+
+.message-row.my-message .message-bubble {
+  background: #105590;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.sender {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.time {
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.message-text {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* BOTÓN ELIMINAR */
+
+.btn-delete-msg {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 26px;
+  height: 26px;
+}
+
+.btn-delete-msg mat-icon {
+  font-size: 16px;
+  color: #ff6b6b;
+}
+
+/* INPUT BAR */
+
+.chat-input-bar {
+  background: #041528;
+  border-radius: 20px;
+  padding: 10px 14px;
+  border: 1px solid rgba(124, 194, 255, 0.25);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.6);
+}
+
+.input-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ========== COMBO USUARIO (PASTILLA) ========== */
+
+.user-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  min-width: 230px;
+  max-width: 260px;
+  height: 44px;
+  border-radius: 999px;
+  background: #0b2745;
+  box-shadow: inset 0 0 0 1px rgba(124, 194, 255, 0.3);
+}
+
+.user-select-wrapper .user-icon {
+  color: #7cc2ff;
+}
+
+.user-select-wrapper .mat-mdc-select {
+  flex: 1;
+  color: #ffffff;
+}
+
+.user-select-wrapper .mat-mdc-select-trigger {
+  height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.user-select-wrapper .mat-mdc-select-value-text {
+  font-size: 13px;
+}
+
+.user-select-wrapper .mat-mdc-select-arrow svg {
+  fill: #7cc2ff;
+}
+
+/* INPUT TEXTO */
+
+.message-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #0b2745;
+  color: #ffffff;
+  font-size: 13px;
+  box-shadow: inset 0 0 0 1px rgba(124, 194, 255, 0.3);
+}
+
+.message-input::placeholder {
+  color: #8fa6c5;
+}
+
+/* BOTÓN ENVIAR */
+
+.btn-send {
+  background: #105590;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6);
+}
+
+.btn-send mat-icon {
+  color: #ffffff;
+}
+
+.btn-send[disabled] {
+  opacity: 0.5;
+  box-shadow: none;
+}
+
+/* ========================================
+   🎨 PANEL COMBO USUARIOS - PALETA INMOVISION
+   ======================================== */
+
+::ng-deep .user-select-panel {
+  background-color: #07152b !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(124, 194, 255, 0.3) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8) !important;
+  padding: 4px 0 !important;
+  min-width: 240px !important;
+  max-width: 280px !important;
+  max-height: 400px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  color: #e5f0ff !important;
+  font-family: 'Poppins', sans-serif !important;
+}
+
+/* Opciones del combo */
+::ng-deep .user-select-panel .mat-mdc-option {
+  background-color: transparent !important;
+  color: #e5f0ff !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  height: 40px !important;
+  padding: 0 16px !important;
+  margin: 1px 8px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Texto interno de la opción */
+::ng-deep .user-select-panel
+  .mat-mdc-option
+  .mdc-list-item__primary-text {
+  color: #e5f0ff !important;
+}
+
+/* Hover */
+::ng-deep .user-select-panel .mat-mdc-option:hover,
+::ng-deep .user-select-panel .mat-mdc-option.mat-mdc-option-active {
+  background-color: #050c1a !important;
+  box-shadow: 0 0 8px rgba(79, 139, 201, 0.4) !important;
+  transform: translateX(4px) !important;
+}
+
+/* Opción seleccionada */
+::ng-deep .user-select-panel
+  .mat-mdc-option.mdc-list-item--selected,
+::ng-deep .user-select-panel
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+  background-color: #105590 !important;
+}
+
+/* Scrollbar vertical del panel */
+::ng-deep .user-select-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+::ng-deep .user-select-panel::-webkit-scrollbar-track {
+  background: #02030a;
+}
+
+::ng-deep .user-select-panel::-webkit-scrollbar-thumb {
+  background: #4f8bc9;
+  border-radius: 999px;
+  box-shadow: 0 0 6px rgba(79, 139, 201, 0.7);
+}
+
+::ng-deep .user-select-panel::-webkit-scrollbar-thumb:hover {
+  background: #7cc2ff;
+}
+
+/* Firefox */
+::ng-deep .user-select-panel {
+  scrollbar-width: thin;
+  scrollbar-color: #4f8bc9 #02030a;
+}
+

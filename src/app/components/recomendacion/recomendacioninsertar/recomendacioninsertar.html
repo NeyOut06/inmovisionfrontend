@@ -1,0 +1,128 @@
+<!-- recomendacion-insertar.html -->
+
+<div class="reco-wrapper">
+  <div class="reco-card">
+    <!-- ENCABEZADO -->
+    <header class="reco-header">
+      <div class="reco-header-text">
+        <h2 class="reco-title">
+          {{ edicion ? 'Editar recomendación' : 'Registrar recomendación' }}
+        </h2>
+        <p class="reco-subtitle">
+          {{ edicion
+            ? 'Actualiza el motivo, la fecha y los datos vinculados a la recomendación.'
+            : 'Completa los campos para registrar una nueva recomendación para una propiedad.'
+          }}
+        </p>
+      </div>
+      <div class="reco-badge">
+        {{ edicion ? 'Edición' : 'Nuevo' }}
+      </div>
+    </header>
+
+    <!-- FORMULARIO -->
+    <form class="reco-form" [formGroup]="form" (ngSubmit)="aceptar()">
+      @if (edicion) {
+        <div class="reco-row">
+          <mat-form-field appearance="outline" class="reco-field full">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="codigo" readonly />
+            <mat-hint>Identificador interno de la recomendación</mat-hint>
+            <mat-error>
+              @if (form.get('codigo')?.hasError('required')) {
+                Ingrese ID.
+              }
+            </mat-error>
+          </mat-form-field>
+        </div>
+      }
+
+      <div class="reco-row">
+        <mat-form-field appearance="outline" class="reco-field full">
+          <mat-label>Motivo de la recomendación</mat-label>
+          <textarea
+            matInput
+            rows="3"
+            formControlName="motivo"
+            placeholder="Ejemplo: Recomiendo esta propiedad por su ubicación y seguridad..."
+          ></textarea>
+          <mat-error>
+            @if (form.get('motivo')?.hasError('required')) {
+              Ingrese motivo.
+            }
+            @if (form.get('motivo')?.hasError('minlength')) {
+              Mínimo 5 caracteres.
+            }
+            @if (form.get('motivo')?.hasError('maxlength')) {
+              Máximo 200 caracteres.
+            }
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="reco-row">
+        <mat-form-field appearance="outline" class="reco-field medium">
+          <mat-label>Fecha</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="fecha" />
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>
+            @if (form.get('fecha')?.hasError('required')) {
+              La fecha es obligatoria.
+            }
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="reco-field medium">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="usuarioFK">
+            @for (us of listaUsuarios; track us) {
+              <mat-option [value]="us.idUser">
+                {{ us.nombre }} {{ us.apellido }}
+              </mat-option>
+            }
+          </mat-select>
+          <mat-error>
+            @if (form.get('usuarioFK')?.hasError('required')) {
+              Seleccione usuario.
+            }
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="reco-row">
+        <mat-form-field appearance="outline" class="reco-field full">
+          <mat-label>Propiedad</mat-label>
+          <mat-select formControlName="propiedadFK">
+            @for (p of listaPropiedades; track p) {
+              <mat-option [value]="p.idPropiedad">
+                {{ p.titulo }}
+              </mat-option>
+            }
+          </mat-select>
+          <mat-error>
+            @if (form.get('propiedadFK')?.hasError('required')) {
+              Seleccione propiedad.
+            }
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- BOTONES -->
+      <div class="reco-actions">
+        <button mat-raised-button color="warn" type="button" (click)="cancelar()">
+          Cancelar
+        </button>
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+        >
+          {{ edicion ? 'Guardar cambios' : 'Registrar recomendación' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
