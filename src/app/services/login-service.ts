@@ -55,12 +55,19 @@ export class LoginService {
 
 
   let token = sessionStorage.getItem('token');
+
   if (!token) return null;
 
+
+
   const helper = new JwtHelperService();
+
   const decodedToken = helper.decodeToken(token);
+
   return decodedToken?.role || null;
+
  }
+
 }
 
 
