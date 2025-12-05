@@ -9,7 +9,7 @@ import { Calificacionlistar } from './calificacionlistar/calificacionlistar';
   styleUrl: './calificacion.css',
 })
 export class Calificacion {
-    constructor(public route:ActivatedRoute){}
+    constructor(public route:ActivatedRoute ){}
 
 
 }

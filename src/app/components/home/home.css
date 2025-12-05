@@ -11,6 +11,13 @@
   --sidebar-active: #007bff;
 }
 
+/* Fondo global */
+body {
+  margin: 0;
+  background-color: var(--bg);
+  font-family: 'Exo 2', sans-serif;
+}
+
 /* ============================ SIDEBAR ============================= */
 .sidebar {
   width: 250px;
@@ -96,13 +103,16 @@
   width: calc(100% - 250px);
 }
 
+/* main sin padding; la separación la maneja la primera sección */
 main {
-  padding-top: 0 !important;
+  margin: 0;
+  padding: 0;
 }
 
 /* SECCIÓN HOME */
 .section-home {
   background-color: var(--bg);
+  margin-top: 64px; /* para que no quede debajo del header fijo */
 }
 
 /* Hero principal */
@@ -153,7 +163,7 @@ main {
 /* Nosotros */
 .nosotros {
   display: flex;
-  background-color: var(--primary);
+  background-color: #020b1f;
   justify-content: space-around;
   color: #ffffff;
   padding: 60px 40px;
@@ -240,6 +250,7 @@ main {
 
 .cartas {
   padding: 60px 40px;
+  background-color: #020b1f;
   display: flex;
   justify-content: space-around;
 }
@@ -345,6 +356,7 @@ main {
 /* TÍTULOS GENERALES */
 .titulo {
   text-align: center;
+  background-color: #020b1f;
   font-weight: bolder;
   padding: 30px;
 }
@@ -354,7 +366,7 @@ main {
   color: #ffffff;
 }
 
-/* FONDO GENERALES */
+/* FONDOS GENERALES */
 .fondo_imagen {
   background-repeat: no-repeat;
   background-size: cover;
@@ -365,7 +377,7 @@ main {
 
 /* EDICIÓN */
 .section-edition {
-  background-color: var(--bg);
+  background-color: #020b1f;
 }
 
 .section-edition .fondo_imagen {
@@ -550,6 +562,7 @@ main {
 .section-favoritos {
   background-color: var(--bg);
   padding-bottom: 40px;
+  background-color: #020b1f;
 }
 
 .favoritos-bg {
@@ -657,7 +670,7 @@ main {
 
 /* ARRENDADOR */
 .section-arrendador {
-  background-color: var(--bg);
+  background-color: #020b1f;
   padding-bottom: 40px;
 }
 
@@ -932,3 +945,72 @@ footer {
     width: 100%;
   }
 }
+
+/* ============= HEADER LANDING ============= */
+
+.landing-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #020b1f;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+}
+
+.landing-header-left,
+.landing-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.brand-mark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-mark img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.brand-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+/* Botón de login alineado a la paleta */
+
+.btn-login {
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(16, 85, 144, 0.45);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, filter 0.12s ease;
+}
+
+.btn-login:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 0 24px rgba(16, 85, 144, 0.7);
+}
+
+

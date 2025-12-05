@@ -1,4 +1,18 @@
-<main>
+<header class="landing-header" *ngIf="!loginService.verificar()">
+  <div class="landing-header-left">
+    <div class="brand-mark">
+      <!-- si tienes logo, úsalo, si no deja solo el texto -->
+      <img src="assets/inmovisionlogo.png" alt="Inmovision" />
+      <span class="brand-name">Inmovision</span>
+    </div>
+  </div>
+  <div class="landing-header-right">
+    <a routerLink="/login" class="btn-login">
+      Iniciar sesión
+    </a>
+  </div>
+</header>
+<main *ngIf="!loginService.verificar()">
   <!-- ============================ HOME / LANDING ============================= -->
   <section id="inicio" class="section-home">
     <div class="imagen-fondo">
@@ -14,7 +28,6 @@
         </a>
       </div>
     </div>
-
     <div class="nosotros">
       <div class="card1">
         <h1>Nosotros</h1>
@@ -48,8 +61,6 @@
         </p>
       </div>
     </div>
-
-    <!-- Casa de campo -->
     <div class="casa">
       <div class="casa-imagen">
         <div class="info">
@@ -210,8 +221,7 @@
     </div>
   </section>
 </main>
-
-<footer>
+<footer *ngIf="!loginService.verificar()">
   <div class="footer-container">
     <div class="footer-column">
       <h3>Acerca de</h3>

@@ -1,7 +1,13 @@
-// security-interceptor.ts
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {
+  HttpInterceptor,
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpErrorResponse,   // ⬅️ agrega esto
+} from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';   // ⬅️ y esto
+import { catchError } from 'rxjs/operators';     // ⬅️ y esto
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
@@ -10,21 +16,22 @@ export class SecurityInterceptor implements HttpInterceptor {
   constructor(private snack: MatSnackBar) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // Obtener el token JWT desde sessionStorage
     const token = sessionStorage.getItem('token');
     
-    // Si hay un token, agrega el encabezado Authorization con el prefijo Bearer
-    if (token) {
-      const clonedRequest = req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}` // Agregar "Bearer" antes del token
+    const clonedRequest = token
+      ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
+      : req;
+
+    // ⬇️ ESTA ES LA LÍNEA/ BLOQUE QUE AGREGA EL MENSAJE
+    return next.handle(clonedRequest).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 403) {
+          this.snack.open('⛔ Tu rol no tiene autorización para esta acción', 'Cerrar', {
+            duration: 3000,
+          });
         }
-      });
-
-      return next.handle(clonedRequest); // Pasar la solicitud clonada con el token
-    }
-
-    // Si no hay token, simplemente pasa la solicitud sin modificarla
-    return next.handle(req);
+        return throwError(() => error);
+      })
+    );
   }
 }

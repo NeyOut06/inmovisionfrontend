@@ -62,38 +62,43 @@ import { Reportevistaspropiedad } from './components/reportevistaspropiedad/repo
 import { Menu } from './components/menu/menu';
 
 export const routes: Routes = [
-  // Redirección inicial
+  // 1) Al entrar por primera vez → /homes (landing pública)
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'homes',
     pathMatch: 'full',
   },
 
-  // LOGIN (sin menú)
+  // 2) HOME LANDING (sin menú, sin guard)
+  {
+    path: 'homes',
+    component: Home,
+  },
+
+  // 3) LOGIN (sin menú)
   {
     path: 'login',
     component: Autenticador,
   },
 
-  // REGISTRO PÚBLICO (si quieres usarlo desde el login)
+  // 4) REGISTRO PÚBLICO (si lo usas desde el login)
   {
     path: 'registro',
     component: Usuarioinsertar,
   },
 
-  // TODO LO PROTEGIDO VA BAJO EL LAYOUT Menu
+  // 5) TODO LO PROTEGIDO va bajo el layout Menu
   {
     path: '',
     component: Menu,
     canActivate: [seguridadGuard],
     children: [
-      // HOME
+      // ⬇️ INICIO interno del sistema (ya con menú)
       {
-        path: 'homes',
-        component: Home,
+        path: 'panel',
+        component: Home, 
       },
 
-      // DISTRITOS
       {
         path: 'distritos',
         component: Distrito,
@@ -102,8 +107,6 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Distritoinsertar },
         ],
       },
-
-      // USUARIOS (mantenimiento interno, distinto del registro público)
       {
         path: 'usuarios',
         component: Usuario,
@@ -112,8 +115,6 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Usuarioinsertar },
         ],
       },
-
-      // ROLES
       {
         path: 'roles',
         component: Rol,
@@ -122,8 +123,6 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Rolinsertar },
         ],
       },
-
-      // PROPIEDADES
       {
         path: 'propiedades',
         component: Propiedad,
@@ -133,38 +132,6 @@ export const routes: Routes = [
           { path: ':id/mapa', component: MapapropiedadComponent },
         ],
       },
-
-      // MENSAJES
-      {
-        path: 'mensajes',
-        component: Mensaje,
-        children: [
-          { path: 'nuevo', component: Mensajeinsertar },
-          { path: 'edits/:id', component: Mensajeinsertar },
-        ],
-      },
-
-      // VISITAS
-      {
-        path: 'visitas',
-        component: Visita,
-        children: [
-          { path: 'nuevo', component: Visitainsertar },
-          { path: 'edits/:id', component: Visitainsertar },
-        ],
-      },
-
-      // CALIFICACIONES
-      {
-        path: 'calificaciones',
-        component: Calificacion,
-        children: [
-          { path: 'nuevo', component: Calificacioninsertar },
-          { path: 'edits/:id', component: Calificacioninsertar },
-        ],
-      },
-
-      // RECOMENDACIONES
       {
         path: 'recomendaciones',
         component: Recomendacion,
@@ -173,8 +140,6 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Recomendacioninsertar },
         ],
       },
-
-      // COMPARACIONES
       {
         path: 'comparaciones',
         component: Comparacion,
@@ -183,8 +148,30 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Comparacioninsertar },
         ],
       },
-
-      // FAVORITOS
+      {
+        path: 'mensajes',
+        component: Mensaje,
+        children: [
+          { path: 'nuevo', component: Mensajeinsertar },
+          { path: 'edits/:id', component: Mensajeinsertar },
+        ],
+      },
+      {
+        path: 'visitas',
+        component: Visita,
+        children: [
+          { path: 'nuevo', component: Visitainsertar },
+          { path: 'edits/:id', component: Visitainsertar },
+        ],
+      },
+      {
+        path: 'calificaciones',
+        component: Calificacion,
+        children: [
+          { path: 'nuevo', component: Calificacioninsertar },
+          { path: 'edits/:id', component: Calificacioninsertar },
+        ],
+      },
       {
         path: 'favoritos',
         component: Favorito,
@@ -193,8 +180,6 @@ export const routes: Routes = [
           { path: 'edit/:id', component: Favoritoinsertar },
         ],
       },
-
-      // LISTA FAVORITOS
       {
         path: 'listas-favoritos',
         component: Lista_favoritos,
@@ -203,8 +188,6 @@ export const routes: Routes = [
           { path: 'edit/:id', component: Lista_favoritosinsertar },
         ],
       },
-
-      // PAGOS
       {
         path: 'pagos',
         component: Pago,
@@ -213,8 +196,6 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Pagoinsertar },
         ],
       },
-
-      // CONTRATOS
       {
         path: 'contratos',
         component: Contrato,
@@ -223,8 +204,6 @@ export const routes: Routes = [
           { path: 'edits/:id', component: Contratoinsertar },
         ],
       },
-
-      // SIMULACIÓN DE PRECIOS
       {
         path: 'simulacion-de-precios',
         component: SimulacionDePrecios,

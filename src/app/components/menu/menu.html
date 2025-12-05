@@ -23,11 +23,7 @@
 
     <!-- MENU PRINCIPAL -->
     <div class="menu-section">
-      <!-- TODOS LOS ROLES: HOME -->
-      <a mat-button routerLink="/homes" routerLinkActive="active-link" class="menu-item">
-        <mat-icon>home</mat-icon>
-        <span *ngIf="!collapsed">Inicio</span>
-      </a>
+      
 
       <!-- SOLO ADMIN -->
       <a
@@ -35,7 +31,7 @@
         routerLink="/usuarios"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.isAdmin() "
       >
         <mat-icon>group</mat-icon>
         <span *ngIf="!collapsed">Usuarios</span>
@@ -46,7 +42,7 @@
         routerLink="/roles"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.isAdmin()"
       >
         <mat-icon>verified_user</mat-icon>
         <span *ngIf="!collapsed">Roles</span>
@@ -57,7 +53,7 @@
         routerLink="/propiedades"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>home_work</mat-icon>
         <span *ngIf="!collapsed">Propiedades</span>
@@ -68,7 +64,7 @@
         routerLink="/mensajes"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>mail</mat-icon>
         <span *ngIf="!collapsed">Mensajes</span>
@@ -79,7 +75,7 @@
         routerLink="/visitas"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>event</mat-icon>
         <span *ngIf="!collapsed">Visitas</span>
@@ -90,7 +86,7 @@
         routerLink="/calificaciones"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>star_rate</mat-icon>
         <span *ngIf="!collapsed">Calificaciones</span>
@@ -101,7 +97,7 @@
         routerLink="/contratos"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>description</mat-icon>
         <span *ngIf="!collapsed">Contratos</span>
@@ -112,7 +108,7 @@
         routerLink="/favoritos"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN','CLIENTE')"
       >
         <mat-icon>favorite</mat-icon>
         <span *ngIf="!collapsed">Favoritos</span>
@@ -123,7 +119,7 @@
         routerLink="/listas-favoritos"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.isAdmin()"
       >
         <mat-icon>list</mat-icon>
         <span *ngIf="!collapsed">Lista favoritos</span>
@@ -134,7 +130,7 @@
         routerLink="/recomendaciones"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>thumb_up</mat-icon>
         <span *ngIf="!collapsed">Recomendaciones</span>
@@ -145,7 +141,7 @@
         routerLink="/comparaciones"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'CLIENTE')"
       >
         <mat-icon>compare</mat-icon>
         <span *ngIf="!collapsed">Comparaciones</span>
@@ -156,7 +152,7 @@
         routerLink="/pagos"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>payments</mat-icon>
         <span *ngIf="!collapsed">Pagos</span>
@@ -167,19 +163,18 @@
         routerLink="/simulacion-de-precios"
         routerLinkActive="active-link"
         class="menu-item"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.hasRole('ADMIN', 'PROPIETARIO' , 'CLIENTE')"
       >
         <mat-icon>calculate</mat-icon>
         <span *ngIf="!collapsed">Simulación de Precios</span>
       </a>
 
-      <!-- BOTÓN REPORTES - SOLO ADMIN -->
       <button
         mat-button
         [matMenuTriggerFor]="menuReportes"
         class="menu-item"
         type="button"
-        *ngIf="isAdmin()"
+        *ngIf="loginService.isAdmin()"
       >
         <mat-icon>analytics</mat-icon>
         <span *ngIf="!collapsed">Reportes</span>

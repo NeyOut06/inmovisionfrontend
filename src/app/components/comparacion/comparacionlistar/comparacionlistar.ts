@@ -9,6 +9,7 @@ import { Comparacion } from '../../../models/Comparacion';
 import { Comparacionservice } from '../../../services/comparacionservice';
 import { Propiedad } from '../../../models/Propiedad'; // Cambiar import
 import { Propiedadservice } from '../../../services/propiedadservice';
+import { LoginService } from '../../../services/login-service';
 
 @Component({
   selector: 'app-comparacionlistar',
@@ -22,7 +23,7 @@ export class Comparacionlistar implements OnInit {
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
   propiedades: Propiedad[] = [];
 
-  constructor(private cS: Comparacionservice, private pS: Propiedadservice) {}
+  constructor(private cS: Comparacionservice, private pS: Propiedadservice , public loginservice: LoginService) {}
 
   ngOnInit(): void {
     this.cargarDatos();

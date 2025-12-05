@@ -40,12 +40,7 @@
 
         <!-- BOTONES -->
         <div class="actions">
-          <button
-            mat-flat-button
-            class="btn-detalle"
-            type="button"
-            (click)="verDetalles(element)"
-          >
+          <button mat-flat-button class="btn-detalle" type="button" (click)="verDetalles(element)">
             <mat-icon>visibility</mat-icon>
             Ver detalles
           </button>
@@ -55,6 +50,7 @@
             color="primary"
             class="btn-edit"
             [routerLink]="['edits', element.idPropiedad]"
+            *ngIf="loginservice.hasRole('ADMIN', 'PROPIETARIO')"
           >
             <mat-icon>edit</mat-icon>
             Editar
@@ -66,6 +62,7 @@
             class="btn-delete"
             type="button"
             (click)="eliminar(element.idPropiedad)"
+            *ngIf="loginservice.hasRole('ADMIN', 'PROPIETARIO')"
           >
             <mat-icon>delete</mat-icon>
             Eliminar
@@ -88,7 +85,12 @@
 
   <!-- BOTÓN REGISTRAR -->
   <div class="register-box">
-    <button mat-flat-button class="btn-register" routerLink="/propiedades/nuevo">
+    <button
+      mat-flat-button
+      class="btn-register"
+      routerLink="/propiedades/nuevo"
+      *ngIf="loginservice.hasRole('ADMIN', 'PROPIETARIO')"
+    >
       Registrar Propiedad
     </button>
   </div>
@@ -125,12 +127,7 @@
         </div>
       </div>
 
-      <button
-        mat-icon-button
-        type="button"
-        class="btn-detalle-close"
-        (click)="cerrarDetalles()"
-      >
+      <button mat-icon-button type="button" class="btn-detalle-close" (click)="cerrarDetalles()">
         <mat-icon>close</mat-icon>
       </button>
     </div>
@@ -156,7 +153,7 @@
           <div class="detalle-item">
             <span class="label">Fecha publicación</span>
             <span class="value">
-              {{ prop.fechaPublicacion | date: 'dd/MM/yyyy' }}
+              {{ prop.fechaPublicacion | date : 'dd/MM/yyyy' }}
             </span>
           </div>
         </div>
@@ -201,9 +198,7 @@
           </div>
           <div class="detalle-item">
             <span class="label">Usuario</span>
-            <span class="value">
-              {{ prop.usuario.nombre }} {{ prop.usuario.apellido}}
-            </span>
+            <span class="value"> {{ prop.usuario.nombre }} {{ prop.usuario.apellido }} </span>
           </div>
         </div>
       </div>

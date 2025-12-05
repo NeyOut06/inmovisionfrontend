@@ -68,6 +68,28 @@ export class LoginService {
 
  }
 
+ isAdmin(): boolean {
+    return this.showRole() === 'ADMIN';
+  }
+
+  isPropietario(): boolean {
+    return this.showRole() === 'PROPIETARIO';
+  }
+
+  isCliente(): boolean {
+    return this.showRole() === 'CLIENTE';
+  }
+
+  isTester(): boolean {
+    return this.showRole() === 'TESTER';
+  }
+
+  hasRole(...roles: string[]): boolean {
+    const role = this.showRole();
+    if (!role) return false;
+    return roles.includes(role);
+  }
+
 }
 
 

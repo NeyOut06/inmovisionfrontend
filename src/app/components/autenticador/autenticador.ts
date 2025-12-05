@@ -32,7 +32,7 @@ export class Autenticador implements OnInit {
     this.loginService.login(request).subscribe(
       (data: any) => {
         sessionStorage.setItem('token', data.jwttoken);
-        this.router.navigate(['homes']);
+        this.router.navigate(['panel']);
       },
       (error) => {
         this.mensaje = 'Credenciales incorrectas!!!';

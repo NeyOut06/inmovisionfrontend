@@ -7,6 +7,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Contrato } from '../../../models/contrato';
 import { Contratoservice } from '../../../services/contratoservice';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login-service';
 
 @Component({
   selector: 'app-contratolistar',
@@ -22,7 +23,7 @@ export class Contratolistar implements OnInit {
     'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'
   ];
 
-  constructor(private cS: Contratoservice, public route: ActivatedRoute) { }
+  constructor(private cS: Contratoservice, public route: ActivatedRoute, public loginservice: LoginService) { }
 
   ngOnInit(): void {
     this.cS.list().subscribe(data => {

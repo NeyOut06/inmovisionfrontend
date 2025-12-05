@@ -32,7 +32,7 @@ export class Menu implements OnInit {
   collapsed = false;
 
   constructor(
-    private loginService: LoginService,
+    public loginService: LoginService,
     private router: Router,
     public route: ActivatedRoute
   ) {}
@@ -45,7 +45,7 @@ export class Menu implements OnInit {
 
   cerrar() {
     sessionStorage.clear();
-    this.router.navigate(['/login']).then(() => {
+    this.router.navigate(['/homes']).then(() => {
       window.location.reload();
     });
   }
@@ -57,19 +57,5 @@ export class Menu implements OnInit {
     return this.loginService.verificar();
   }
 
-  isAdmin() {
-    return this.role === 'ADMIN';
-  }
-
-  isTester() {
-    return this.role === 'TESTER';
-  }
-
-  isComprador() {
-    return this.role === 'COMPRADOR';
-  }
-
-  isCliente() {
-    return this.role === 'CLIENTE';
-  }
+  
 }

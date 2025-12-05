@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
+import { LoginService } from '../../../services/login-service';
 
 @Component({
   selector: 'app-calificacionlistar',
@@ -28,7 +29,7 @@ export class Calificacionlistar implements OnInit {
     'h'  // eliminar
   ];
 
-  constructor(private cS: CalificacionService, public route:ActivatedRoute) {}
+  constructor(private cS: CalificacionService, public route:ActivatedRoute,     public loginService: LoginService ) {}
 
   ngOnInit(): void {
     this.cS.list().subscribe(data => {

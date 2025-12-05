@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { Propiedad } from '../../../models/Propiedad';
 import { Propiedadservice } from '../../../services/propiedadservice';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../../services/login-service';
 
 @Component({
   selector: 'app-propiedadlistar',
@@ -33,7 +34,8 @@ export class Propiedadlistar implements OnInit {
   constructor(
     private dS: Propiedadservice,
     private router: Router,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    public loginservice: LoginService
   ) {}
 
   ngOnInit(): void {
