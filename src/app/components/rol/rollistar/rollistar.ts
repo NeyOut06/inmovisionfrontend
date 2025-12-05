@@ -6,29 +6,49 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Rol } from '../../../models/Rol';
 import { Rolservice } from '../../../services/rolservice';
 import { CommonModule } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-rollistar',
-  imports: [MatTableModule, MatIconModule, MatButtonModule,RouterLink, CommonModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule,RouterLink, CommonModule, MatPaginator],
   templateUrl: './rollistar.html',
   styleUrl: './rollistar.css',
 })
 export class Rollistar implements OnInit {
+  dataSource: Rol[] = [];
+  dataPaginada: Rol[] = [];
 
-  dataSource:MatTableDataSource<Rol>=new MatTableDataSource
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5'];
-  
+  totalRegistros = 0;
+  paginaActual = 0;
+  tamanioPagina = 4;
 
   constructor(private rS:Rolservice, public route:ActivatedRoute){}
 
   ngOnInit(): void {
-    this.rS.list().subscribe(data=>{
-      this.dataSource=new MatTableDataSource(data)
-    })
-    this.rS.getList().subscribe(data=>{
-      this.dataSource=new MatTableDataSource(data)
-    })
-    
+    this.rS.list().subscribe(data => {
+      this.dataSource = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
+    });
+
+    this.rS.getList().subscribe(data => {
+      this.dataSource = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
+    });
+  }
+
+  actualizarPaginado() {
+    const start = this.paginaActual * this.tamanioPagina;
+    const end = start + this.tamanioPagina;
+
+    this.dataPaginada = this.dataSource.slice(start, end);
+  }
+
+  cambiarPagina(event: any) {
+    this.paginaActual = event.pageIndex;
+    this.tamanioPagina = event.pageSize;
+    this.actualizarPaginado();
   }
 
   eliminar(id: number) {

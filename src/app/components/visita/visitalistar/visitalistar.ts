@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Visita } from '../../../models/Visita';
 import { VisitaService } from '../../../services/visitaservice';
@@ -7,15 +7,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { A11yModule } from "@angular/cdk/a11y";
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-visitalistar',
-  imports: [MatTableModule, CommonModule, MatIconModule, MatButtonModule, RouterLink, A11yModule],
+  imports: [MatTableModule, CommonModule, MatIconModule, MatButtonModule, RouterLink, A11yModule, MatPaginatorModule],
   templateUrl: './visitalistar.html',
   styleUrl: './visitalistar.css',
 })
 export class Visitalistar implements OnInit {
-
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Visita> = new MatTableDataSource();
 
   displayedColumns: string[] = [
@@ -33,10 +34,12 @@ export class Visitalistar implements OnInit {
   ngOnInit(): void {
     this.vS.list().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
 
     this.vS.getList().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

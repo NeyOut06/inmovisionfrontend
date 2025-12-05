@@ -73,6 +73,11 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
+  <mat-paginator 
+      [pageSizeOptions]="[5, 10, 15]" 
+      showFirstLastButtons>
+  </mat-paginator> 
+
   <div class="actions">
     <button mat-menu-item routerLink="/calificaciones/nuevo"
     *ngIf="loginService.hasRole('ADMIN', 'CLIENTE')" >Registrar Calificacion</button>

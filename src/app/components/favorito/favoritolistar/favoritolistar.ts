@@ -6,15 +6,22 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Favoritoservice } from '../../../services/favoritoservice';
 import { Favorito } from '../../../models/Favorito';
 import { CommonModule } from '@angular/common';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-favoritolistar',
-  imports: [MatTableModule, MatIconModule, MatButtonModule, RouterLink, CommonModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule, RouterLink, CommonModule, MatPaginatorModule],
   templateUrl: './favoritolistar.html',
   styleUrl: './favoritolistar.css',
 })
 export class Favoritolistar implements OnInit {
-  dataSource: MatTableDataSource<Favorito> = new MatTableDataSource();
+  favoritos: Favorito[] = [];       
+  dataPaginada: Favorito[] = [];    
+  
+    // PAGINACIÓN
+  totalRegistros = 0;
+  paginaActual = 0;
+  tamanioPagina = 3;
   displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7'];
 
   constructor(
@@ -23,12 +30,30 @@ export class Favoritolistar implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.fS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+    this.fS.list().subscribe(data => {
+      this.favoritos = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
-    this.fS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+
+    this.fS.getList().subscribe(data => {
+      this.favoritos = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
+  }
+
+  actualizarPaginado() {
+    const start = this.paginaActual * this.tamanioPagina;
+    const end = start + this.tamanioPagina;
+
+    this.dataPaginada = this.favoritos.slice(start, end);
+  }
+
+  cambiarPagina(event: any) {
+    this.paginaActual = event.pageIndex;
+    this.tamanioPagina = event.pageSize;
+    this.actualizarPaginado();
   }
 
   eliminar(id: number) {

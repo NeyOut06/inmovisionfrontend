@@ -30,14 +30,14 @@
 
     <!-- LISTA DE COMPARACIONES -->
     <div class="comp-list">
-      @if (comparaciones.length === 0) {
+      @if (comparacionesPaginadas.length === 0) {
         <div class="empty-state">
           <mat-icon>compare_arrows</mat-icon>
           <p>No hay comparaciones registradas</p>
         </div>
       }
 
-      @for (element of comparaciones; track element.idComparacion) {
+      @for (element of comparacionesPaginadas; track element.idComparacion) {
         <div class="comp-row">
           <!-- Columna usuario / id -->
           <div class="comp-user">
@@ -127,5 +127,14 @@
         </div>
       }
     </div>
+
+    <mat-paginator
+      [length]="totalRegistros"
+      [pageIndex]="paginaActual"
+      [pageSize]="tamanioPagina"
+      [pageSizeOptions]="[3, 6, 9]"
+      (page)="cambiarPagina($event)"
+      showFirstLastButtons>
+    </mat-paginator>
   </div>
 </div>

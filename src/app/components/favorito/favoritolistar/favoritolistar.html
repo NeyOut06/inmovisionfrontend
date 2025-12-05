@@ -19,11 +19,11 @@
   <!-- GRID DE CARDS -->
   <section
     class="fav-grid"
-    *ngIf="dataSource.data.length > 0; else noFavs"
+    *ngIf="dataPaginada.length > 0; else noFavs"
   >
     <article
       class="fav-card"
-      *ngFor="let element of dataSource.data"
+      *ngFor="let element of dataPaginada"
     >
       <!-- HEADER CARD -->
       <header class="fav-card-header">
@@ -67,6 +67,17 @@
       </footer>
     </article>
   </section>
+
+  <!--  PAGINADOR -->
+  <mat-paginator
+    [length]="totalRegistros"
+    [pageIndex]="paginaActual"
+    [pageSize]="tamanioPagina"
+    [pageSizeOptions]="[3, 6, 9]"
+    (page)="cambiarPagina($event)"
+    showFirstLastButtons
+    class="paginador">
+  </mat-paginator>
 
   <!-- SIN DATOS -->
   <ng-template #noFavs>

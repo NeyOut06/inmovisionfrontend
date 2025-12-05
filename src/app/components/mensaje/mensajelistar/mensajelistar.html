@@ -15,14 +15,14 @@
 
   <!-- GRID DE PROPIEDADES -->
   <section class="cards-grid">
-    @if (propiedades.length === 0) {
+    @if (dataSource.length === 0) {
       <div class="empty-state">
         <mat-icon>home_work</mat-icon>
         <p>No hay propiedades disponibles</p>
       </div>
     }
 
-    @for (propiedad of propiedades; track propiedad.idPropiedad) {
+    @for (propiedad of dataPaginada; track propiedad.idPropiedad) {
       <article
         class="property-card"
         (click)="abrirChat(propiedad.idPropiedad)"
@@ -57,4 +57,14 @@
       </article>
     }
   </section>
+
+  <!-- PAGINADOR -->
+  <mat-paginator
+    [length]="totalRegistros"
+    [pageIndex]="paginaActual"
+    [pageSize]="tamanioPagina"
+    [pageSizeOptions]="[3, 6, 9]"
+    (page)="cambiarPagina($event)"
+    showFirstLastButtons>
+  </mat-paginator>
 </div>

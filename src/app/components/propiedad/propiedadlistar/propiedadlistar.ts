@@ -7,6 +7,7 @@ import { Propiedad } from '../../../models/Propiedad';
 import { Propiedadservice } from '../../../services/propiedadservice';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../../services/login-service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-propiedadlistar',
@@ -17,16 +18,18 @@ import { LoginService } from '../../../services/login-service';
     MatButtonModule,
     RouterLink,
     CommonModule,
+    MatPaginatorModule
   ],
   templateUrl: './propiedadlistar.html',
   styleUrls: ['./propiedadlistar.css'],
 })
 export class Propiedadlistar implements OnInit {
-  dataSource: MatTableDataSource<Propiedad> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'c1','c2','c3','c4','c5','c6','c7','c8','c9','c10','c11',
-    'c12','c13','c14','c15','c16','c17','c18','c19','c20','c21','c22'
-  ];
+  dataSource: Propiedad[] = [];
+  dataPaginada: Propiedad[] = [];
+  
+  totalRegistros = 0;
+  paginaActual = 0;
+  tamanioPagina = 3;
 
   // Propiedad seleccionada para ver detalles
   selectedPropiedad: Propiedad | null = null;
@@ -39,12 +42,30 @@ export class Propiedadlistar implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.dS.list().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+    this.dS.list().subscribe(data => {
+      this.dataSource = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
-    this.dS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+
+    this.dS.getList().subscribe(data => {
+      this.dataSource = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
+  }
+
+  actualizarPaginado() {
+    const start = this.paginaActual * this.tamanioPagina;
+    const end = start + this.tamanioPagina;
+
+    this.dataPaginada = this.dataSource.slice(start, end);
+  }
+
+  cambiarPagina(event: any) {
+    this.paginaActual = event.pageIndex;
+    this.tamanioPagina = event.pageSize;
+    this.actualizarPaginado();
   }
 
   eliminar(id: number) {

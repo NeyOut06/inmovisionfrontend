@@ -328,3 +328,72 @@
     justify-content: center;
   }
 }
+
+/* ================================
+   PAGINADOR - INMOVISION UI
+   ================================ */
+
+/* Contenedor del paginador */
+:host ::ng-deep .mat-mdc-paginator {
+  margin-top: 18px;
+  background: #041528 !important;
+  border: 1px solid rgba(124, 194, 255, 0.22);
+  border-radius: 14px;
+  padding: 6px 12px !important;
+  color: #e5f0ff !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.7);
+}
+
+/* Flechas izquierda / derecha / first / last */
+:host ::ng-deep .mat-mdc-paginator-navigation-button {
+  color: #7cc2ff !important;
+  border-radius: 8px !important;
+  transition: all 0.18s ease;
+}
+
+/* Hover de botones */
+:host ::ng-deep .mat-mdc-paginator-navigation-button:not([disabled]):hover {
+  background: #10345b !important;
+  box-shadow: 0 0 6px rgba(124, 194, 255, 0.5);
+}
+
+/* Estado disabled (gris suave) */
+:host ::ng-deep .mat-mdc-paginator-navigation-button[disabled] {
+  opacity: 0.3;
+}
+
+/* Texto "X–Y de Z" */
+:host ::ng-deep .mat-mdc-paginator-range-label {
+  color: #cfe3ff !important;
+  font-size: 0.82rem;
+}
+
+/* Selector Items per page */
+:host ::ng-deep .mat-mdc-paginator-page-size-label {
+  color: #cfe3ff !important;
+  font-size: 0.82rem;
+}
+
+/* Dropdown del selector */
+:host ::ng-deep .mat-mdc-select-value,
+:host ::ng-deep .mat-mdc-select-arrow {
+  color: #7cc2ff !important;
+}
+
+:host ::ng-deep .mat-mdc-select-panel {
+  background: #041528 !important;
+  border: 1px solid rgba(124, 194, 255, 0.35);
+}
+
+:host ::ng-deep .mat-mdc-option {
+  color: #e5f0ff !important;
+}
+
+:host ::ng-deep .mat-mdc-option:hover {
+  background: #0c2644 !important;
+}
+
+:host ::ng-deep .mat-mdc-option.mdc-list-item--selected {
+  background: rgba(124, 194, 255, 0.15) !important;
+  color: #7cc2ff !important;
+}

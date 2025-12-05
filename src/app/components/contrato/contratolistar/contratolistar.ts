@@ -8,17 +8,23 @@ import { Contrato } from '../../../models/contrato';
 import { Contratoservice } from '../../../services/contratoservice';
 import { CommonModule } from '@angular/common';
 import { LoginService } from '../../../services/login-service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-contratolistar',
-  imports: [MatTableModule, MatIconModule, MatButtonModule, RouterLink, CommonModule],
+  imports: [MatTableModule, MatIconModule, MatButtonModule, RouterLink, CommonModule, MatPaginatorModule],
   templateUrl: './contratolistar.html',
   styleUrl: './contratolistar.css',
 })
 export class Contratolistar implements OnInit {
 
-  contratos: Contrato[] = []; // Array para @for
-  dataSource: MatTableDataSource<Contrato> = new MatTableDataSource();
+  contratos: Contrato[] = [];       // Todos los contratos
+  dataPaginada: Contrato[] = [];    // Los que se muestran en la página actual
+
+  // PAGINACIÓN
+  totalRegistros = 0;
+  paginaActual = 0;
+  tamanioPagina = 3;
   displayedColumns: string[] = [
     'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9', 'c10'
   ];
@@ -27,21 +33,37 @@ export class Contratolistar implements OnInit {
 
   ngOnInit(): void {
     this.cS.list().subscribe(data => {
-      this.contratos = data; // Guarda en el array
-      this.dataSource = new MatTableDataSource(data); // Para si lo necesitas después
+      this.contratos = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
 
     this.cS.getList().subscribe(data => {
-      this.contratos = data; // Guarda en el array
-      this.dataSource = new MatTableDataSource(data);
+      this.contratos = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
+  }
+
+  actualizarPaginado() {
+    const start = this.paginaActual * this.tamanioPagina;
+    const end = start + this.tamanioPagina;
+
+    this.dataPaginada = this.contratos.slice(start, end);
+  }
+
+  cambiarPagina(event: any) {
+    this.paginaActual = event.pageIndex;
+    this.tamanioPagina = event.pageSize;
+    this.actualizarPaginado();
   }
 
   eliminar(id: number) {
     this.cS.delete(id).subscribe(() => {
       this.cS.list().subscribe(data => {
-        this.contratos = data; // Actualiza el array
-        this.dataSource = new MatTableDataSource(data);
+        this.contratos = data;
+        this.totalRegistros = data.length;
+        this.actualizarPaginado();
         this.cS.setList(data);
       });
     });

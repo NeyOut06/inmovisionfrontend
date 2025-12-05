@@ -10,8 +10,8 @@
   </div>
 
   <!-- GRID DE CARDS -->
-  <div class="cards-grid" *ngIf="dataSource.data.length; else emptyState">
-    <div class="role-card" *ngFor="let element of dataSource.data">
+  <div class="cards-grid" *ngIf="dataSource.length; else emptyState">
+    <div class="role-card" *ngFor="let element of dataPaginada">
       <!-- CHIP DEL ROL -->
       <div
         class="role-chip"
@@ -84,6 +84,16 @@
       </div>
     </div>
   </div>
+
+  <!-- PAGINADOR -->
+  <mat-paginator
+    [length]="totalRegistros"
+    [pageIndex]="paginaActual"
+    [pageSize]="tamanioPagina"
+    [pageSizeOptions]="[4, 8, 12]"
+    (page)="cambiarPagina($event)"
+    showFirstLastButtons>
+  </mat-paginator>
 
   <!-- SIN ROLES -->
   <ng-template #emptyState>

@@ -184,3 +184,82 @@
     justify-content: center;
   }
 }
+
+
+/* ================================
+   PAGINADOR - INMOVISION UI
+   ================================ */
+
+:host ::ng-deep .mat-mdc-paginator {
+  background: #041528 !important;
+  color: #e5f0ff !important;
+  border-radius: 16px;
+  border: 1px solid rgba(124, 194, 255, 0.25);
+  margin-top: 14px;
+  padding: 8px 14px !important;
+}
+
+/* Labels */
+:host ::ng-deep .mat-mdc-paginator-range-label {
+  color: #cfe3ff !important;
+  font-size: 0.78rem;
+}
+
+/* Select "items per page" */
+:host ::ng-deep .mat-mdc-paginator-page-size-label {
+  color: #cfe3ff !important;
+}
+
+:host ::ng-deep .mat-mdc-select-value {
+  color: #7cc2ff !important;
+}
+
+:host ::ng-deep .mat-mdc-select-arrow {
+  color: #7cc2ff !important;
+}
+
+/* Select panel */
+:host ::ng-deep .mat-mdc-select-panel {
+  background: #041528 !important;
+  border: 1px solid rgba(124, 194, 255, 0.4);
+}
+
+/* Items del panel */
+:host ::ng-deep .mdc-list-item__primary-text {
+  color: #e5f0ff !important;
+}
+
+:host ::ng-deep .mdc-list-item:hover {
+  background: #0b345e !important;
+}
+
+/* Botones del paginador (arrows) */
+:host ::ng-deep .mat-mdc-paginator-navigation-button {
+  color: #7cc2ff !important;       /* Celeste igual que items per page */
+  border-radius: 8px;
+  transition: all 0.18s ease;
+  border: 1px solid #7cc2ff33;   
+}
+
+:host ::ng-deep .mat-mdc-paginator-navigation-button:not([disabled]):hover {
+  background: #7cc2ff !important;
+  color: #0d223b !important;        /* Texto oscuro para contraste */
+  box-shadow: 0 0 6px rgba(124, 194, 255, 0.6);
+  border-color: #7cc2ff;  
+}
+
+/* Estado disabled */
+:host ::ng-deep .mat-mdc-paginator-navigation-button[disabled] {
+  opacity: 0.3;
+}
+
+/* ================================
+   RESPONSIVE PAGINATOR
+   ================================ */
+@media (max-width: 860px) {
+  :host ::ng-deep .mat-mdc-paginator {
+    flex-direction: column !important;
+    gap: 8px;
+    text-align: center;
+  }
+}

@@ -10,18 +10,22 @@ import { Comparacionservice } from '../../../services/comparacionservice';
 import { Propiedad } from '../../../models/Propiedad'; // Cambiar import
 import { Propiedadservice } from '../../../services/propiedadservice';
 import { LoginService } from '../../../services/login-service';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-comparacionlistar',
-  imports: [MatTableModule, CommonModule, MatIconModule, MatButtonModule, RouterLink],
+  imports: [MatTableModule, CommonModule, MatIconModule, MatButtonModule, RouterLink, MatPaginatorModule],
   templateUrl: './comparacionlistar.html',
   styleUrl: './comparacionlistar.css',
 })
 export class Comparacionlistar implements OnInit {
   comparaciones: Comparacion[] = [];
-  dataSource: MatTableDataSource<Comparacion> = new MatTableDataSource();
-  displayedColumns: string[] = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+  comparacionesPaginadas: Comparacion[] = [];
   propiedades: Propiedad[] = [];
+
+  totalRegistros = 0;
+  paginaActual = 0;
+  tamanioPagina = 3;
 
   constructor(private cS: Comparacionservice, private pS: Propiedadservice , public loginservice: LoginService) {}
 
@@ -50,7 +54,8 @@ export class Comparacionlistar implements OnInit {
         });
 
         this.propiedades = resultado.propiedades;
-        this.dataSource = new MatTableDataSource(this.comparaciones);
+        this.totalRegistros = this.comparaciones.length;
+        this.actualizarPaginado();
         
         console.log('Comparaciones cargadas con imágenes:', this.comparaciones);
       },
@@ -62,12 +67,25 @@ export class Comparacionlistar implements OnInit {
     // Suscribirse a cambios en tiempo real
     this.cS.getList().subscribe((data) => {
       this.comparaciones = data;
-      this.dataSource = new MatTableDataSource(data);
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
 
     this.pS.getList().subscribe((data) => {
       this.propiedades = data;
     });
+  }
+
+  actualizarPaginado() {
+    const start = this.paginaActual * this.tamanioPagina;
+    const end = start + this.tamanioPagina;
+    this.comparacionesPaginadas = this.comparaciones.slice(start, end);
+  }
+
+  cambiarPagina(event: any) {
+    this.paginaActual = event.pageIndex;
+    this.tamanioPagina = event.pageSize;
+    this.actualizarPaginado();
   }
 
   eliminar(id: number): void {

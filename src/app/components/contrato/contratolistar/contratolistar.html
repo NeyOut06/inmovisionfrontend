@@ -4,7 +4,7 @@
 
   <div class="contracts-grid">
     <!-- Card de Contrato -->
-    @for (element of contratos; track element.idContrato) {
+    @for (element of dataPaginada; track element.idContrato) {
     <div class="contract-card">
       
       <!-- Header con icono -->
@@ -77,6 +77,17 @@
     
   </div>
 }
+</div>
+  <!--  PAGINADOR -->
+  <mat-paginator
+    [length]="totalRegistros"
+    [pageIndex]="paginaActual"
+    [pageSize]="tamanioPagina"
+    [pageSizeOptions]="[3, 6, 9]"
+    (page)="cambiarPagina($event)"
+    showFirstLastButtons
+    class="paginador">
+  </mat-paginator>
 
   <!-- Botón Registrar -->
   <div class="actions">

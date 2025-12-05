@@ -7,16 +7,22 @@ import { Router } from '@angular/router';
 
 import { Propiedad } from '../../../models/Propiedad';
 import { Propiedadservice } from '../../../services/propiedadservice';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-mensajelistar',
   standalone: true,
-  imports: [CommonModule, MatIconModule, MatButtonModule],
+  imports: [CommonModule, MatIconModule, MatButtonModule, MatPaginatorModule],
   templateUrl: './mensajelistar.html',
   styleUrl: './mensajelistar.css',
 })
 export class Mensajelistar implements OnInit {
-  propiedades: Propiedad[] = [];
+  dataSource: Propiedad[] = [];
+  dataPaginada: Propiedad[] = [];
+  
+  totalRegistros = 0;
+  paginaActual = 0;
+  tamanioPagina = 3;
 
   constructor(
     private pS: Propiedadservice,
@@ -25,12 +31,29 @@ export class Mensajelistar implements OnInit {
 
   ngOnInit(): void {
     this.pS.list().subscribe((data) => {
-      this.propiedades = data;
+      this.dataSource = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
 
     this.pS.getList().subscribe((data) => {
-      this.propiedades = data;
+      this.dataSource = data;
+      this.totalRegistros = data.length;
+      this.actualizarPaginado();
     });
+  }
+
+  actualizarPaginado() {
+    const start = this.paginaActual * this.tamanioPagina;
+    const end = start + this.tamanioPagina;
+
+    this.dataPaginada = this.dataSource.slice(start, end);
+  }
+
+  cambiarPagina(event: any) {
+    this.paginaActual = event.pageIndex;
+    this.tamanioPagina = event.pageSize;
+    this.actualizarPaginado();
   }
 
   abrirChat(idPropiedad: number): void {

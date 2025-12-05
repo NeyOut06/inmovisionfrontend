@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Calificacion } from '../../../models/Calificacion';
 import { CalificacionService } from '../../../services/calificacionservice';
@@ -7,15 +7,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { LoginService } from '../../../services/login-service';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-calificacionlistar',
-  imports: [MatTableModule, CommonModule, MatIconModule, MatButtonModule, RouterLink],
+  imports: [MatTableModule, CommonModule, MatIconModule, MatButtonModule, RouterLink, MatPaginatorModule],
   templateUrl: './calificacionlistar.html',
   styleUrl: './calificacionlistar.css',
 })
 export class Calificacionlistar implements OnInit {
-
+ @ViewChild(MatPaginator) paginator!: MatPaginator;
   dataSource: MatTableDataSource<Calificacion> = new MatTableDataSource();
 
   displayedColumns: string[] = [
@@ -34,10 +35,12 @@ export class Calificacionlistar implements OnInit {
   ngOnInit(): void {
     this.cS.list().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
 
     this.cS.getList().subscribe(data => {
       this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
     });
   }
 

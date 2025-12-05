@@ -4,7 +4,7 @@
 
   <div class="payments-grid">
     <!-- Card de Pago -->
-    @for (element of pagos; track element.idPago) {
+    @for (element of dataPaginada; track element.idPago) {
     <div class="payment-card">
       
       <!-- Header con icono -->
@@ -78,6 +78,16 @@
     </div>
     }
   </div>
+
+  <!-- PAGINADOR -->
+  <mat-paginator
+    [length]="totalRegistros"
+    [pageIndex]="paginaActual"
+    [pageSize]="tamanioPagina"
+    [pageSizeOptions]="[3, 6, 12]"
+    (page)="cambiarPagina($event)"
+    showFirstLastButtons>
+  </mat-paginator>
 
   <!-- Botón Registrar -->
   <div class="actions">
